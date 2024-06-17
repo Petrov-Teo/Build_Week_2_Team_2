@@ -1,34 +1,41 @@
-.card {
-    position: relative;
-    width: calc(18% - 20px);
-    height: 150px;
-    margin: 10px;
-    overflow: hidden;
-  }
+.static-card {
+  position: relative;
+  width: calc(18% - 20px);
+  height: 150px;
+  margin: 10px;
+  overflow: hidden;
+}
 
-  
-  .card:nth-child(odd) {
-    background-color: #ff7f7f; /* Rosso chiaro */
-  }
-  
-  .card:nth-child(even) {
-    background-color: #7fbfff; /* Blu chiaro */
-  }
-  
-  .card h2 {
-    position: absolute;
-    font-size: 1.5em;
-    color: white;
-    z-index: 2;
-  }
-  
-  .card img {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    transform: rotate(-15deg);
-    z-index: 1;
-  }
-  
+
+.static-card h2 {
+  position: absolute;
+  font-size: 1.5em;
+  color: white;
+  z-index: 2;
+}
+
+.static-card img {
+  position: absolute;
+  bottom: -5px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(20deg);
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dynamic-card {
+  width: calc(18% - 20px);
+  margin: 10px;
+}
+
+.dynamic-card img {
+  width: 100%;
+  height: auto;
+}
+
+.dynamic-card .card-body {
+  text-align: center;
+}
