@@ -3,6 +3,23 @@ body {
   background-color: #000000;
 }
 
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.nav-container {
+  width: 350px;
+}
+
+.main-container {
+  width: calc(100% - 600px);
+}
+
+.activity-container {
+  width: 250px;
+}
+
 a {
   text-decoration: none;
   color: #b3b3b3;
@@ -18,17 +35,42 @@ li {
 }
 
 .profile-pic {
-  width: 100%;
+  width: 40px;
 }
 
 main {
   background-color: #1c1c1c;
 }
 
-.hero-img {
-  width: 100%;
-}
-
 .btn-dark {
   background-color: #000000 !important;
+}
+
+.btn-success {
+  background-color: #1db954;
+}
+
+.friends-activity {
+  color: #b3b3b3;
+}
+
+.annunci {
+  width: 95%;
+  margin-inline: auto;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(28, 28, 28, 1) 80%);
+}
+
+.hide-annunci {
+  background-color: #222222;
+  border: none;
+  color: #b3b3b3;
+}
+
+.hide-annunci:hover {
+  background-color: #222222;
+}
+
+.hero-img {
+  width: 200px;
 }
