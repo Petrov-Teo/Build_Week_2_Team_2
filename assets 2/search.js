@@ -40,7 +40,7 @@ function displayResults(data) {
   const tracks = data.data;
   tracks.forEach((track) => {
     const resultCard = `
-      <div class="card text-bg-dark">
+      <div class="dynamic-card card text-bg-dark col-md-3">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
         <div class="card-body">
           <h5 class="card-title">${track.title}</h5>
