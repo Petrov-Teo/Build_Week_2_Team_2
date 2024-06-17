@@ -1,7 +1,6 @@
 body {
   font-family: "Circular";
   background-color: #000000;
-  color: #b3b3b3;
 }
 
 a {
@@ -16,4 +15,8 @@ a:hover {
 li {
   list-style: none;
   height: 30px;
+}
+
+.profile-pic {
+  width: 100%;
 }
