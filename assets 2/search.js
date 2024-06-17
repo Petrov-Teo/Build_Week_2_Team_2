@@ -7,9 +7,9 @@ document.getElementById("search-button").addEventListener("click", function () {
 
 document
   .getElementById("search-input")
-  .addEventListener("keydown", function (event) {
+  .addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
-      const query = document.getElementById("search-input").value;
+      const query = event.target.value;
       searchDeezer(query);
     }
   });
@@ -39,8 +39,8 @@ function displayResults(data) {
 
   const tracks = data.data;
   tracks.forEach((track) => {
-    const resultCards = `
-      <div class="card text-bg-dark col-md-3 m-2">
+    const resultCard = `
+      <div class="card text-bg-dark">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
         <div class="card-body">
           <h5 class="card-title">${track.title}</h5>
@@ -50,7 +50,7 @@ function displayResults(data) {
         </div>
       </div>
     `;
-    resultsDiv.innerHTML += resultCards;
+    resultsDiv.innerHTML += resultCard;
   });
 }
 
