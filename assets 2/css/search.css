@@ -3,7 +3,7 @@ body{
 }
 .static-card {
   position: relative;
-  width: calc(23% - 20px);
+  width: calc(25% - 20px);
   height: 150px;
   margin: 10px;
   overflow: hidden;
@@ -85,6 +85,8 @@ a:hover {
 li {
   list-style: none;
   height: 30px;
+  font-family:"CircularStd-Black", sans-serif ;
+  color:white;
 }
 
 .profile-pic {
