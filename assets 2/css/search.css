@@ -143,18 +143,18 @@ main {
 #results {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px; /* Add some space between the cards */
+  gap: 16px; 
 }
 
 #artist-info {
   flex: 1;
-  min-width: 250px; /* Adjust as needed */
+  min-width: 250px;
 }
 
 #songs-info {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Ensures 3 columns */
-  gap: 16px; /* Add some space between the cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   flex: 3;
 }
 
