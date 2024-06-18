@@ -138,3 +138,6 @@ main {
 .imgArtistAlbum {
   border-radius: 50px;
 }
+
+.elencoBraniAlbum{
+  background: linear-gradient(to right, blue, green);
