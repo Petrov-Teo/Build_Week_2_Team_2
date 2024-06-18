@@ -173,6 +173,34 @@ main {
   z-index: 2;
 }
 
+
+
+.song-card-dropdown .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+.artist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.artist-header h5 {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spazio tra il nome dell'artista e il pulsante dropdown */
+}
+
+.dropdown.song-card-dropdown {
+  display: inline-block;
+}
+
 .song-card-dropdown button {
   background: transparent;
   border: none;
@@ -185,12 +213,14 @@ main {
   left: auto;
 }
 
-
 .card-img-top {
   width: 100%;
   height: auto;
 }
-
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
 
 @media (max-width: 768px) {
   #artist-info, #songs-info {

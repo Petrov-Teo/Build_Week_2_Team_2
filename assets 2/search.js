@@ -71,7 +71,18 @@ function displayResults(data) {
     <div class="artist-card card text-bg-dark">
       <img src="${artist.picture_medium}" class="card-img-top" alt="${artist.name}">
       <div class="card-body">
-        <h5 class="card-title">${artist.name}</h5>
+        <div class="artist-header">
+          <h5 class="card-title">${artist.name}</h5>
+          <div class="dropdown song-card-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${artist.id}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              &#x22EE;
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${artist.id}">
+              <a class="dropdown-item" href="artist.html?id=${artist.id}" target="_blank">Go to artist page</a>
+              <a class="dropdown-item" href="album.html?id=${tracks[0].album.id}" target="_blank">Go to album page</a>
+            </div>
+          </div>
+        </div>
         <p class="card-text">Number of tracks: ${tracks.length}</p>
       </div>
     </div>
@@ -81,18 +92,8 @@ function displayResults(data) {
     const songDiv = document.createElement("div");
     songDiv.classList.add("song-card", "card", "text-bg-dark");
     songDiv.innerHTML = `
-   
       <div class="image-container">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
-        <div class="dropdown song-card-dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${track.id}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            &#x22EE;
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${track.id}">
-            <a class="dropdown-item" href="artist.html?id=${track.artist.id}" target="_blank">Go to artist page</a>
-            <a class="dropdown-item" href="album.html?id=${track.album.id}" target="_blank">Go to album page</a>
-          </div>
-        </div>
       </div>
       <div class="card-body">
         <h5 class="card-title">${track.title}</h5>
