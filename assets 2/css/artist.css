@@ -21,14 +21,29 @@ body {
     width: 100%;
   }
 
+  .playlist {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-container{
+    height: calc(100vh - 300px); 
+
+    overflow-y: auto;
+}
+
 
 /* blocco centrale */
 
 .artist-header {
-    background-image: url('immagine_2022-10-17_003505762.png');
     background-size: cover;
     background-position: center;
     height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .artist-header h1 {
@@ -50,11 +65,18 @@ body {
 }
 
 .img-thumbnail {
+    width: 40px;
+    height: 40px;
     border-radius: 0;
     object-fit: cover;
+    padding: 0;
+    margin-right: 10px;
 }
 
-  /* player */
+.list-unstyled li{
+    justify-content: space-between;
+}
+
 
  /* Stile per il player fisso in fondo alla pagina */
 .player {
