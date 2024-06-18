@@ -54,9 +54,9 @@ body {
     object-fit: cover;
 }
 
-  /* player */
 
  /* Stile per il player fisso in fondo alla pagina */
+ 
 .player {
     position: fixed;
     bottom: 0;
