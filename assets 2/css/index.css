@@ -33,6 +33,11 @@ h6 {
   flex-basis: 300px;
 }
 
+.playlists-container {
+  overflow: auto;
+  height: calc(100vh - 367px);
+}
+
 .right-sidebar {
   background-color: #121212;
 }
