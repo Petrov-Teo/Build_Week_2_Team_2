@@ -88,8 +88,8 @@ function displayResults(data) {
             &#x22EE;
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${track.id}">
-            <a class="dropdown-item" href="${track.artist.link}" target="_blank">Go to artist page</a>
-            <a class="dropdown-item" href="${track.album.link}" target="_blank">Go to album page</a>
+            <a class="dropdown-item" href="artist.html?id=${track.artist.id}" target="_blank">Go to artist page</a>
+            <a class="dropdown-item" href="album.html?id=${track.album.id}" target="_blank">Go to album page</a>
           </div>
         </div>
       </div>
