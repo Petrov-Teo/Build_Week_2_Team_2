@@ -14,7 +14,7 @@ h6 {
 }
 
 .page-container {
-  min-height: 100vh;
+  height: calc(100vh - 75px);
 }
 
 .nav-container {
@@ -24,7 +24,7 @@ h6 {
 }
 
 .main-container {
-  width: calc(100% - 600px);
+  flex-grow: 1;
 }
 
 .activity-container {
@@ -125,4 +125,12 @@ main {
 
 nav {
   background-color: #121212;
+}
+
+footer {
+  height: 75px;
+  background-color: #000000;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
