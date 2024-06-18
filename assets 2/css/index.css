@@ -30,7 +30,11 @@ h6 {
 .activity-container {
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 250px;
+  flex-basis: 300px;
+}
+
+.right-sidebar {
+  background-color: #121212;
 }
 
 a {
@@ -76,6 +80,10 @@ main {
 
 .friends-activity {
   color: #b3b3b3;
+}
+
+.info {
+  flex-grow: 1;
 }
 
 .annunci {
