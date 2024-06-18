@@ -24,6 +24,9 @@
       type="image/png"
       href="https://open.spotifycdn.com/cdn/images/favicon16.1c487bff.png"
     />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div class="container mt-5">
@@ -31,7 +34,7 @@
         <!-- Aside Column -->
         <div class="col-md-3">
           <aside class="d-flex flex-column pt-3 nav-container">
-            <nav class="border-bottom border-secondary">
+            <nav class="border-bottom w-75 border-secondary">
               <ul class="mb-5">
                 <li class="mb-3">
                   <a href="#">
@@ -265,7 +268,7 @@
             </div>
           </div>
           <div id="static-cards" class="card-container row">
-            <div class="title"><h2>Browse All</h2></div>
+            <div id="browse-all"><h2>Browse All</h2></div>
           </div>
           <!-- Cards -->
           <div class="row" style="width: 100%">
@@ -798,9 +801,6 @@
       </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
     <script src="assets 2/search.js"></script>
   </body>
