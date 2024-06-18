@@ -83,12 +83,10 @@ main {
   background-color: #1db954;
 }
 
-.friends-activity {
+.friends-activity-container {
   color: #b3b3b3;
-}
-
-.info {
-  flex-grow: 1;
+  height: calc(100vh - 112px);
+  overflow: auto;
 }
 
 .annunci {
@@ -138,4 +136,16 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.footer-flex-div {
+  width: 30%;
+}
+
+.song-bar {
+  width: 80%;
+}
+
+.volume-bar {
+  width: 15%;
 }
