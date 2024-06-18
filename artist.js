@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const query = "queen"; // Cambia questo valore per cercare un artista diverso
+    const query = "Yellowcard"; // Cambia questo valore per cercare un artista diverso
     const endpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`;
 
     fetch(endpoint)
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         document.querySelector('.player small').textContent = track.artist.name;
                         document.querySelector('.player').style.display = 'block';
                     });
-                    
+
                     tracksList.appendChild(trackItem);
                 });
 
