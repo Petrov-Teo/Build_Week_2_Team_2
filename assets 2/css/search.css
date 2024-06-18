@@ -1,9 +1,9 @@
-html{
+body{
   background-color: #141414;
 }
 .static-card {
   position: relative;
-  width: calc(18% - 20px);
+  width: calc(23% - 20px);
   height: 150px;
   margin: 10px;
   overflow: hidden;
@@ -23,14 +23,20 @@ html{
   position: absolute;
   bottom: -5px;
   right: -20px;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   transform: rotate(20deg);
   z-index: 1;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+h2 {
+  font-family:"CircularStd-Black", sans-serif ;
+}
+.title{
+  color: white;
+}
 .dynamic-card {
   width: calc(18% - 20px);
   margin: 10px;
@@ -43,4 +49,13 @@ html{
 
 .dynamic-card .card-body {
   text-align: center;
+}
+
+@font-face {
+  font-family: "CircularStd-Black";
+  src: url(../fonts/CircularStd-Black.otf) format("opentype");
+}
+@font-face {
+  font-family: "CircularStd-BlackItalic";
+  src: url(../fonts/CircularStd-BlackItalic.otf) format("opentype");
 }
