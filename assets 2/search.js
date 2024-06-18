@@ -81,6 +81,7 @@ function displayResults(data) {
     const songDiv = document.createElement("div");
     songDiv.classList.add("song-card", "card", "text-bg-dark");
     songDiv.innerHTML = `
+   
       <div class="image-container">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
         <div class="dropdown song-card-dropdown">
