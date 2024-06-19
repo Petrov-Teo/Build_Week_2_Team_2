@@ -24,7 +24,7 @@
 
     <div class="d-flex page-container">
         <!-- MENU -->
-        <aside class="d-flex flex-column pt-3 nav-container">
+        <aside class="d-flex flex-column pt-3 nav-container d-none d-md-block">
             <nav class="border-bottom border-secondary">
                 <ul class="mb-5">
                     <li class="mb-3">
@@ -138,73 +138,147 @@
 
         </aside>
 
-
         <!-- MAIN -->
-        <main class="main-container">
-            <div class="container position-relative">
-                <div class="d-flex justify-content-evenly py-3 rounded-2 mb-3 row">
-                    <header class="d-flex col-12 justify-content-between align-items-baseline">
-                        <div>
-                            <button class="nextBtn text-center">
-                                <svg data-encore-id=" icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
+        <main class="main-container container-md cntainer-lg">
+            <div class="d-flex justify-content-evenly py-3 rounded-2 mb-3 row">
+
+
+                <!-- HEADER -->
+                <header class="d-flex col-12 justify-content-between align-items-baseline">
+                    <div class="d-none d-md-flex">
+                        <button class="nextBtn text-center">
+                            <svg data-encore-id=" icon" role="img" aria-hidden="true" viewBox="0 0 16 16" width=" 15px"
+                                height="15px" fill="#b3b3b3">
+                                <path
+                                    d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z">
+                                </path>
+                            </svg></button>
+                        <button class="nextBtn text-center">
+                            <div><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
                                     width=" 15px" height="15px" fill="#b3b3b3">
-                                    <path
-                                        d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z">
-                                    </path>
-                                </svg></button>
-                            <button class="nextBtn text-center">
-                                <div><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
-                                        width=" 15px" height="15px" fill="#b3b3b3">
-                                        <path d=" M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06
+                                    <path d=" M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06
                                         1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="d-flex align-items-baseline">
-                            <div class="p-2">
-                                <a class="iscriviti" href="#">Iscriviti</a>
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="p-2">
-                                <button class="btnAccedi px-3 py-2">Accedi</button>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-baseline d-none d-md-flex">
+                        <div class="p-2">
+                            <a class="iscriviti" href="#">Iscriviti</a>
+                        </div>
+                        <div class="p-2">
+                            <button class="btnAccedi px-3 py-2">Accedi</button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- ALBUM -->
+                <aside>
+                    <div class="d-flex flex-column flex-md-row p-2">
+                        <div class="d-flex ">
+                            <div class="d-block d-md-none col-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                                </svg>
+                            </div>
+                            <div class="ImgDiv">
+                                <img class="col-10 col-4" src=" ./assets 2/imgs/main/image-11.jpg" alt="album"
+                                    width="100%">
                             </div>
                         </div>
-                    </header>
-                    <div class="d-flex">
-                        <div class="row align-items-end">
-                            <img src=" ./assets 2/imgs/main/image-11.jpg" alt="album" width="170px">
-                        </div>
-                        <div class="row align-items-end ps-2">
-                            <p>Album</p>
+                        <div class="row align-items-end ps-2 ">
+                            <div class="d-none d-md-block">
+                                <p>Album</p>
+                            </div>
                             <h2 id="titoloAlbum">Titolo Album </h2>
-                            <div class="d-flex align-items-end">
-                                <div id="imgArtistAlbum">
-                                    <img class="imgArtistAlbum" src="./assets 2/imgs/main/image-11.jpg" alt=""
-                                        width="30px">
+                            <div class="d-flex flex-column flex-md-row ">
+                                <div class="d-flex">
+                                    <div id="imgArtistAlbum col-md-3">
+                                        <img class="imgArtistAlbum" src="./assets 2/imgs/main/image-11.jpg" alt=""
+                                            width="30px">
+                                    </div>
+                                    <div class="d-flex col-9">
+                                        <p id="nomeArtistaAlbum" class="nomeArtistaAlbum m-0 ps-1">Nome</p>
+                                    </div>
                                 </div>
-                                <div class="d-flex align-items-end">
-                                    <p id="nomeArtistaAlbum" class="nomeArtistaAlbum">Nome</p>
-                                    <ul class="ps-2">
-                                        <li id="annoAlbum" class="annoAlbum d-inline">annoAlbum </li>
-                                        <li id="numeroBrani" class="numeroBrani  d-inline">numeroBrani</li>
-                                        <li id="durataAlbum" class="durataAlbum  d-inline">durataAlbum</li>
-                                    </ul>
+
+                                <ul class="ps-2 m-0 d-md-inline  align-items-center">
+                                    <li id=" annoAlbum" class="annoAlbum col col-md-12">Anno Album </li>
+                                    <li id="numeroBrani" class="numeroBrani col col-md-12 " d>Numero Brani</li>
+                                    <li id="durataAlbum" class="durataAlbum col col-md-12 ">Durata Album</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <div class="elencoBraniAlbum">
+                    <div class="container pt-3">
+                        <div class="row">
+                            <div class="p-4 col-12">
+                                <div class="d-flexs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#1cdf63"
+                                        class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                                    </svg>
+                                    <button class="buttonPreferit ps-4">
+                                        <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24"
+                                            class="fill" fill="#a7a7a7">
+                                            <path
+                                                d="M11.999 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm-11 9c0-6.075 4.925-11 11-11s11 4.925 11 11-4.925 11-11 11-11-4.925-11-11z">
+                                            </path>
+                                            <path
+                                                d="M17.999 12a1 1 0 0 1-1 1h-4v4a1 1 0 1 1-2 0v-4h-4a1 1 0 1 1 0-2h4V7a1 1 0 1 1 2 0v4h4a1 1 0 0 1 1 1z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <button class="buttonPreferit ps-1">
+                                        <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24"
+                                            class="Svg-sc-ytk21e-0 cqasRA" fill="#a7a7a7" width="30" height="30">
+                                            <path
+                                                d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="position-absolute elencoBraniAlbum">
-                    qui da metter play anteprima
-
+                    <div class="container">
+                        <div class="d-flex row">
+                            <div class="col-1 text-center">
+                                <h6>#</h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>TITOLO</h6>
+                            </div>
+                            <div class="col-3">
+                                <h6>RIPRODUZIONE</h6>
+                            </div>
+                            <div class="col-2 text-center ps-3">
+                                <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
+                                    fill="#a7a7a7" width="20" height="20">
+                                    <path
+                                        d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                                    </path>
+                                    <path
+                                        d="M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-
         <!-- ATTIVITA AMICI -->
-        <aside class="pt-3 activity-container">
+        <aside class="pt-3 activity-container d-none d-md-block">
             <div class="ps-2">
 
                 <div class="d-flex justify-content-between">
