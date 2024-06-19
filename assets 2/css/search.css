@@ -160,6 +160,11 @@ main {
 
 .song-card {
   position: relative;
+  background-color: transparent;
+}
+
+.card-title{
+  color: white;
 }
 
 .image-container {

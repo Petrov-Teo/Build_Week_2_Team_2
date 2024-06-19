@@ -83,11 +83,11 @@ function displayResults(data) {
   const artist = tracks[0].artist;
 
   artistInfo.innerHTML = `
-    <div class="artist-card card text-bg-dark">
-      <img src="${artist.picture_medium}" class="card-img-top" alt="${artist.name}">
+    <div class="artist-card card" style="background-color: transparent;">
+      <img src="${artist.picture_medium}" class="card-img-top rounded-circle" alt="${artist.name}">
       <div class="card-body">
         <div class="artist-header">
-          <h5 class="card-title">${artist.name}</h5>
+          <h5 class="card-title" style="color: white;">${artist.name}</h5>
           <div class="dropdown song-card-dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${artist.id}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               &#x22EE;
@@ -98,14 +98,14 @@ function displayResults(data) {
             </div>
           </div>
         </div>
-        <p class="card-text">Number of tracks: ${tracks.length}</p>
+        <p class="card-text" style="color: white;">Number of tracks: ${tracks.length}</p>
       </div>
     </div>
   `;
 
   tracks.forEach((track) => {
     const songDiv = document.createElement("div");
-    songDiv.classList.add("song-card", "card", "text-bg-dark");
+    songDiv.classList.add("song-card", "card", "card-title");
     songDiv.innerHTML = `
       <div class="image-container">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
@@ -113,9 +113,9 @@ function displayResults(data) {
       <div class="card-body">
         <h5 class="card-title">${track.title}</h5>
         <p class="card-text">Album: ${track.album.title}</p>
-        <a href="${track.link}" class="btn btn-primary" target="_blank">Listen on Deezer</a>
+       
       </div>
-    `;
+    `; //<a href="${track.link}" class="btn btn-primary" target="_blank">Listen on Deezer</a>
     songsInfo.appendChild(songDiv);
   });
 
