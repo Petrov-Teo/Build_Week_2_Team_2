@@ -199,7 +199,7 @@ main {
 .artist-header h5 {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spazio tra il nome dell'artista e il pulsante dropdown */
+  gap: 10px; 
 }
 
 .dropdown.song-card-dropdown {
