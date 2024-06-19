@@ -43,9 +43,22 @@ document.addEventListener("DOMContentLoaded", function() {
                                             '<small>' + Math.floor(track.duration / 60) + ':' + ('0' + track.duration % 60).slice(-2) + '</small>' +
                                         '</div>';
                     trackItem.addEventListener('click', function() {
-                        currentTrack = track;
-                        updatePlayer(track);
-                    });
+                        if (currentTrack === track) {
+                            // Se il brano è lo stesso, fermare la riproduzione
+                        if (!audioPlayer.paused) {
+                            audioPlayer.pause();
+                            playPauseButton.innerHTML = getPlayIcon();  // Cambia icona a play
+                         } else {
+                            audioPlayer.play();
+                            playPauseButton.innerHTML = getPauseIcon();  // Cambia icona a pausa
+                            }
+                        } else {
+                            currentTrack = track;
+                            updatePlayer(track);
+                         }
+                        });
+                    
+                    
 
                     tracksList.appendChild(trackItem);
                 });
@@ -56,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector('.player-artist').textContent = track.artist.name;
                     audioPlayer.src = track.preview;  // Imposta l'anteprima audio come sorgente
                     audioPlayer.play();  // Riproduce l'audio
-                    
                     document.querySelector('footer').style.display = 'flex';
                 }
 
