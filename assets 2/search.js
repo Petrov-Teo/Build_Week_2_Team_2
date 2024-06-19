@@ -38,8 +38,23 @@ function searchDeezer(query) {
     .then((response) => response.json())
     .then((data) => {
       displayResults(data);
+      displayTitles();
     })
     .catch((error) => console.error("Error:", error));
+}
+
+function displayTitles() {
+  const titlesContainer = document.getElementById("titles-container");
+  titlesContainer.innerHTML = `
+    <div class="titles" style="display: flex; justify-content: space-between; width: 100%;">
+      <h2 style="color: white; flex: 1; text-align: start; margin-left: 1%;">Artist</h2>
+      <h2 style="color: white; flex: 1; text-align: start; margin-right: 42%;">Songs</h2>
+    </div>
+  `;
+  titlesContainer.style.display = "flex";
+  titlesContainer.style.justifyContent = "space-between";
+  titlesContainer.style.padding = "10px 0";
+  titlesContainer.style.marginBottom = "20px";
 }
 
 function displayResults(data) {
