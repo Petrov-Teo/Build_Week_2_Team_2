@@ -42,26 +42,14 @@ li {
   margin-right: 1em;
 }
 
-.annunci {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(28, 28, 28, 1) 80%);
-}
-
 .friends-activity-container {
   color: #b3b3b3;
   height: calc(100vh - 112px);
   overflow: auto;
 }
 
-.hide-annunci {
-  background-color: #222222;
-  color: #b3b3b3;
-}
-
-.card-personalised {
-  background-color: #181818;
-  color: #b3b3b3;
-  border: none;
+nav {
+  background-color: #121212;
 }
 
 footer {
@@ -189,12 +177,4 @@ footer {
     height: calc(100vh - 103px);
     overflow: auto;
   }
-
-  .page-container {
-    height: calc(100vh - 67px);
-  }
-}
-
-nav {
-  background-color: #121212;
 }
