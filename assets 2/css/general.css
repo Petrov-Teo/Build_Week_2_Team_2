@@ -67,9 +67,7 @@ li {
 footer {
   height: 75px;
   background-color: #000000;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: fixed;
 }
 
 .footer-flex-div {
