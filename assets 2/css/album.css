@@ -2,13 +2,6 @@ body {
   background-color: black;
 }
 
-.navbar {
-  margin: 0;
-  width: 300px;
-  min-height: 100vh;
-  background-color: black;
-  display: inline-block;
-}
 .svgLogo {
   width: 90px;
   color: white;
@@ -42,26 +35,10 @@ body {
   border-radius: 20px;
   border: none;
 }
-.main-grid {
-  background-color: #d96b6b;
-}
-body {
-  font-family: "Circular";
-  background-color: #000000;
-}
-
-.nav-container {
-  width: 350px;
-}
 
 .main-container {
   overflow: auto;
-
-  width: calc(100% - 600px);
-}
-
-.activity-container {
-  width: 250px;
+  flex-grow: 1;
 }
 
 a {
@@ -78,47 +55,16 @@ li {
   height: 30px;
 }
 
-.profile-pic {
-  width: 40px;
-}
-
 main {
   background-color: #ceb349;
-}
-
-.btn-dark {
-  background-color: #000000 !important;
 }
 
 .btn-success {
   background-color: #1db954;
 }
 
-.friends-activity {
-  color: #b3b3b3;
-}
-
-.annunci {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(28, 28, 28, 1) 80%);
-}
-
-.hide-annunci {
-  background-color: #222222;
-  border: none;
-  color: #b3b3b3;
-}
-
-.hide-annunci:hover {
-  background-color: #222222;
-}
-
 .hero-img {
   width: 200px;
-}
-
-.main-grid {
-  background-color: #2c2c2c;
 }
 
 .aHome {
@@ -127,9 +73,6 @@ main {
 }
 .aHome:hover {
   color: white;
-}
-.iscriviti {
-  color: black;
 }
 
 .imgArtistAlbum {
