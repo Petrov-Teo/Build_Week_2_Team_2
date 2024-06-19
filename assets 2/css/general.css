@@ -4,13 +4,17 @@ body {
   color: #b3b3b3;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+a {
+  text-decoration: none;
+  color: #b3b3b3;
+}
+
+a:hover {
   color: #ffffff;
+}
+
+li {
+  list-style: none;
 }
 
 .page-container {
@@ -23,19 +27,6 @@ h6 {
 
 .right-sidebar {
   background-color: #121212;
-}
-
-a {
-  text-decoration: none;
-  color: #b3b3b3;
-}
-
-a:hover {
-  color: #ffffff;
-}
-
-li {
-  list-style: none;
 }
 
 .line-clamp {
@@ -51,16 +42,9 @@ li {
   margin-right: 1em;
 }
 
-.profile-pic {
-  width: 40px;
-}
-
-.btn-dark {
-  background-color: #000000 !important;
-}
-
-.btn-success {
-  background-color: #1db954;
+.annunci {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(28, 28, 28, 1) 80%);
 }
 
 .friends-activity-container {
@@ -69,40 +53,15 @@ li {
   overflow: auto;
 }
 
-.annunci {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(28, 28, 28, 1) 80%);
-}
-
 .hide-annunci {
   background-color: #222222;
   color: #b3b3b3;
-}
-
-.hero-img {
-  width: 200px;
-}
-
-.main-grid {
-  background-color: #2c2c2c;
 }
 
 .card-personalised {
   background-color: #181818;
   color: #b3b3b3;
   border: none;
-}
-
-.card-title {
-  color: #ffffff;
-}
-
-.main-item {
-  background-color: #2c2c2c;
-}
-
-nav {
-  background-color: #121212;
 }
 
 footer {
@@ -236,4 +195,8 @@ footer {
   .page-container {
     height: calc(100vh - 67px);
   }
+}
+
+nav {
+  background-color: #121212;
 }
