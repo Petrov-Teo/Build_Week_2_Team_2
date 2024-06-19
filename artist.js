@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var query = "Yellowcard"; // Cambia questo valore per cercare un artista diverso
+    var query = "Calcutta"; // Cambia questo valore per cercare un artista diverso
     var endpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query;
 
     fetch(endpoint)
