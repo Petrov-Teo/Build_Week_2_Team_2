@@ -577,46 +577,56 @@
                 </header>
 
                 <!-- ALBUM -->
-                <aside>
-                    <div class="d-flex flex-column flex-md-row p-2">
-                        <div class="d-flex ">
-                            <div class="d-block d-md-none col-2">
+                <section class="pb-2">
+                    <div class="d-flex flex-column flex-md-row p-3">
+                        <!-- DIV CON FRECCE PER SPOSTARE GLI ALBUM -->
+                        <div class="d-flex row ">
+                            <div class="d-block d-md-none col-5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                     class="bi bi-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
                                 </svg>
                             </div>
-                            <div class="ImgDiv">
-                                <img class="col-10 col-4" src=" ./assets 2/imgs/main/image-11.jpg" alt="album"
+                            <div class="ImgDiv imgShadow">
+                                <img class="col imgShadow" src=" ./assets 2/imgs/main/image-11.jpg" alt="album"
                                     width="100%">
                             </div>
                         </div>
+                        <!-- DESCRIZIONE ALBUM -->
                         <div class="row align-items-end ps-2 ">
                             <div class="d-none d-md-block">
                                 <p>Album</p>
                             </div>
                             <h2 id="titoloAlbum">Titolo Album </h2>
-                            <div class="d-flex flex-column flex-md-row ">
-                                <div class="d-flex">
-                                    <div id="imgArtistAlbum col-md-3">
-                                        <img class="imgArtistAlbum" src="./assets 2/imgs/main/image-11.jpg" alt=""
-                                            width="30px">
+                            <div class="container">
+                                <div class="d-md-flex md-row">
+                                    <div id=" imgArtistAlbum col-md-3 shadow p-3 mb-5 bg-body-tertiary rounded">
+                                        <img class="imgArtistAlbum" src="./assets 2/imgs/main/image-11.jpg"
+                                            alt="Album Pic" width="30px">
+                                        <span id="nomeArtistaAlbum" class="nomeArtistaAlbum m-0 ps-1">Nome</span>
                                     </div>
-                                    <div class="d-flex col-9">
-                                        <p id="nomeArtistaAlbum" class="nomeArtistaAlbum m-0 ps-1">Nome</p>
+
+                                    <!-- DIV DETTAGLI ALBUM  -->
+                                    <div class="d-md-flex md-row align-items-center">
+                                        <div>
+                                            <span class="col ps-1">Album</span>
+                                        </div>
+                                        <div>
+                                            <span class="col ps-1">Anno</span>
+                                        </div>
+                                        <div>
+                                            <span class="d-none d-md-block col ps-1">N.Brani</span>
+                                        </div>
+                                        <div>
+                                            <span class="d-none d-md-block col ps-1">tot.Album</span>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <ul class="ps-2 m-0 d-md-inline  align-items-center">
-                                    <li id=" annoAlbum" class="annoAlbum col col-md-12">Anno Album </li>
-                                    <li id="numeroBrani" class="numeroBrani col col-md-12 " d>Numero Brani</li>
-                                    <li id="durataAlbum" class="durataAlbum col col-md-12 ">Durata Album</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
-                </aside>
+                </section>
                 <div class="elencoBraniAlbum">
                     <div class="container pt-3">
                         <div class="row">
@@ -653,6 +663,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="container">
                         <div class="d-flex row">
                             <div class="col-1 text-center">
@@ -679,6 +690,7 @@
                     </div>
                 </div>
             </div>
+
         </main>
 
 
