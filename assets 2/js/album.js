@@ -9,13 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const artistName = document.getElementById("nomeArtistaAlbum");
   const albumYear = document.getElementById("albumYear");
   const numberSongsAlbum = document.getElementById("numberSongs");
-  const totalAlbumDuration = document.getElementById("albumLength");
-  const numberSong = document.getElementById("numberSong");
-  const titleSong = document.getElementById("titleSong");
-  const reproductions = document.getElementById("reproductions");
-  const durationTime = document.getElementById("durationTime");
   const albumLength = document.getElementById("albumLength");
   const elencoBraniAlbum = document.querySelector(".elencoBraniAlbum");
+  const imgFooter = document.getElementById("imgFooter");
 
   // URL
   const query = "423368";
@@ -28,22 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(function (album) {
       albumName.innerText = album.title;
       artistName.innerText = album.artist.name;
-      /* const songsAlbum = data.data; */
-      console.log(album);
-
-      cl(albumName);
-      /* cl(songsAlbum); */
-      /* cl(artist); */
 
       imgAlbum.src = album.cover_big;
-      /* albumName.innerText = albumN.title; */
+
       imgArtist.src = album.artist.picture_xl;
+      imgFooter.src = album.cover_big;
       artistName.innerText = album.artist.name;
       numberSongsAlbum.innerText = `${album.nb_tracks} brani`;
       albumYear.innerText = album.release_date.substring(0, 4);
       albumLength.innerText = `${Math.floor(album.duration / 60)} min ${album.duration % 60} sec.`;
 
-      cl(albumName);
+      cl(album);
 
       const tracklist = album.tracks.data;
       tracklist.forEach((canzone, index) => {
@@ -64,8 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const songDetails = document.createElement("div");
         songDetails.className = "col-6";
         const songName = document.createElement("p");
+        songName.className = "mb-0";
         songName.innerText = canzone.title;
         const artistName = document.createElement("small");
+        artistName.className = "textColor";
         artistName.innerText = canzone.artist.name;
         songDetails.append(songName, artistName);
 
