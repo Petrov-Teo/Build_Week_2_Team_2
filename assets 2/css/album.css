@@ -107,3 +107,7 @@ svg:hover {
 .ImgDiv {
   min-width: 232px;
 }
+
+br {
+  border-bottom: #b3b3b3;
+}
