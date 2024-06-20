@@ -1,5 +1,6 @@
+
 document.addEventListener("DOMContentLoaded", function() {
-    var query = "Empire of the sun"; // Cambia questo valore per cercare un artista diverso
+    var query = "Empire of the sun";
     var endpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query;
 
     function getRandomListeners() {
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     trackItem.addEventListener('click', function() {
                         if (currentTrack === track) {
-                            // Se il brano è lo stesso, fermare la riproduzione
+                            // Se il brano è lo stesso, ferma la riproduzione
                         if (!audioPlayer.paused) {
                             audioPlayer.pause();
                             playPauseButton.innerHTML = getPlayIcon();  // Cambia icona a play
@@ -94,3 +95,16 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error fetching data:', error);
         });
 });
+
+const activities = document.getElementById("activities");
+const hideActivitiesBtn = document.getElementById("hideActivitiesBtn");
+const showActivitiesBtn = document.getElementById("showActivitiesBtn");
+
+hideActivitiesBtn.addEventListener("click", () => {
+  activities.classList.remove("d-lg-block");
+});
+
+showActivitiesBtn.addEventListener("click", () => {
+  activities.classList.toggle("d-lg-block");
+});
+

@@ -814,7 +814,7 @@
       </main>
 
       <!-- RIGHT SIDEBAR -->
-      <aside class="d-none d-lg-block activity-container">
+      <aside id="activities" class="d-none d-lg-block activity-container">
         <div class="container mt-2 right-sidebar rounded">
           <div class="d-flex justify-content-between align-items-center pt-1">
             <div class="text-nowrap me-3">
@@ -837,11 +837,13 @@
                 />
               </svg>
               <svg
+                id="hideActivitiesBtn"
+                role="button"
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
                 fill="#a7a7a7"
-                class="bi bi-x"
+                class="bi bi-x ms-2"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -853,63 +855,73 @@
           <div class="friends-activity-container">
             <div class="my-3 d-flex align-items-start">
               <img
-                src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg"
+                src="https://this-person-does-not-exist.com/img/avatar-gen110b5c7a45247901f650ca5cdafe173f.jpg"
                 alt=""
                 class="rounded-circle profile-pic align-self-start me-3"
               />
               <div class="info me-auto">
-                <div class="nome">Nome utente</div>
+                <div class="nome">Divino Otelma</div>
                 <div class="dettagli">
-                  Canzone - Artista <br />
-                  Album
+                  Yellow - Coldplay <br />
+                  <small class="line-clamp">Parachutes</small>
                 </div>
               </div>
-              <div class="friends-activity">8 ore</div>
+              <div class="friends-activity flex-shrink-0">
+                <small>Adesso</small>
+              </div>
             </div>
             <div class="my-3 d-flex align-items-start">
               <img
-                src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg"
+                src="https://this-person-does-not-exist.com/img/avatar-gen980b4a3398a24256b07f1e3ed3609c12.jpg"
                 alt=""
                 class="rounded-circle profile-pic align-self-start me-3"
               />
               <div class="info me-auto">
-                <div class="nome">Nome utente</div>
+                <div class="nome">Whiskers</div>
                 <div class="dettagli">
-                  Canzone - Artista <br />
-                  Album
+                  To &uuml; - Jack &Uuml; <br />
+                  <small class="line-clamp"
+                    >Skrillex and Diplo Present Jack &Uuml;</small
+                  >
                 </div>
               </div>
-              <div class="friends-activity">8 ore</div>
+              <div class="friends-activity flex-shrink-0">
+                <small>1 ora</small>
+              </div>
             </div>
             <div class="my-3 d-flex align-items-start">
               <img
-                src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg"
+                src="https://this-person-does-not-exist.com/img/avatar-gendc62f1abf8270c17f837cdc0961ddc93.jpg"
                 alt=""
                 class="rounded-circle profile-pic align-self-start me-3"
               />
               <div class="info me-auto">
-                <div class="nome">Nome utente</div>
+                <div class="nome">Sniper62</div>
                 <div class="dettagli">
-                  Canzone - Artista <br />
-                  Album
+                  Thunderstruck - AC/DC <br />
+                  <small class="line-clamp">The Razors Edge</small>
                 </div>
               </div>
-              <div class="friends-activity">8 ore</div>
+              <div class="friends-activity flex-shrink-0">
+                <small>5 ore</small>
+              </div>
             </div>
             <div class="my-3 d-flex align-items-start">
               <img
-                src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg"
+                src="https://this-person-does-not-exist.com/img/avatar-gen2736293209f40548e2492e6c53b1f099.jpg"
                 alt=""
                 class="rounded-circle profile-pic align-self-start me-3"
               />
               <div class="info me-auto">
-                <div class="nome">Nome utente</div>
+                <div class="nome">Tom Bombadil</div>
                 <div class="dettagli">
-                  Canzone - Artista <br />
-                  Album
+                  Stivali E Colbacco - Adriano Celentano <br />
+                  <small class="line-clamp">Soli</small>
                 </div>
               </div>
-              <div class="friends-activity">8 ore</div>
+              <div class="friends-activity flex-shrink-0">
+                <small>6 ore</small>
+              </div>
             </div>
           </div>
         </div>
@@ -1059,7 +1071,7 @@
       <div
         class="d-flex justify-content-end footer-flex-div align-items-center"
       >
-        <button class="btn">
+        <button class="btn" id="showActivitiesBtn">
           <svg
             data-encore-id="icon"
             role="img"
