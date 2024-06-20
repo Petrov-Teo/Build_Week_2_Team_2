@@ -66,6 +66,20 @@ small {
   width: 60px;
 }
 
+.mobile-player {
+  background-color: #262626;
+  position: fixed;
+  z-index: 99;
+  bottom: 100px;
+}
+
+@media screen and (max-width: 767px) {
+  .cards-container {
+    margin-bottom: 9rem;
+    margin-top: 1rem;
+  }
+}
+
 @media screen and (min-width: 576px) {
   .suggested-pic {
     width: 75px;
