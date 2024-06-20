@@ -8,14 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var query = "Empire of the sun";
   var endpoint = "https://striveschool-api.herokuapp.com/api/deezer/artist/" + query;
 
-  function getRandomListeners() {
-    return Math.floor(Math.random() * (20000000 - 1000000 + 1)) + 1000000;
-  }
-
-  function getRandomTrackPlays() {
-    return Math.floor(Math.random() * (2000000 - 100000 + 1)) + 100000;
-  }
-
   fetch(URL + id)
     .then(function (response) {
       return response.json();
@@ -42,63 +34,27 @@ document.addEventListener("DOMContentLoaded", function () {
           "</div>";
 
         document.getElementById("artist-name").textContent = artist.name;
-        /* document.getElementById("monthly-listeners").textContent = getRandomListeners().toLocaleString() + " ascoltatori mensili"; */
         document.getElementById("monthly-listeners").textContent = `${artist.nb_fan.toLocaleString()} ascoltatori mensili`;
 
-        var artistHeader = document.getElementById("artist-header");
+        const artistHeader = document.getElementById("artist-header");
         artistHeader.style.backgroundImage = "url(" + artist.picture_xl + ")";
 
-        var tracksList = document.getElementById("tracks-list");
-        tracksList.innerHTML = "";
-        tracks.slice(0, 5).forEach(function (track, index) {
-          var trackItem = document.createElement("li");
-          var randomPlays = getRandomTrackPlays();
-          trackItem.classList.add("d-flex", "align-items-center", "mb-3");
-          trackItem.innerHTML =
-            '<div class="col-6 track-info d-flex align-items-center">' +
-            '<img src="' +
-            track.album.cover +
-            '" alt="cover" class="img-thumbnail">' +
-            '<div class="ml-3">' +
-            '<h6 class="mb-0">' +
-            track.title +
-            "</h6>" +
-            "<small>" +
-            track.artist.name +
-            "</small>" +
-            "</div>" +
-            "</div>" +
-            '<div class="col-3 track-plays text-center">' +
-            "<small>" +
-            randomPlays.toLocaleString() +
-            " ascolti</small>" +
-            "</div>" +
-            '<div class="col-3 track-duration text-right">' +
-            "<small>" +
-            Math.floor(track.duration / 60) +
-            ":" +
-            ("0" + (track.duration % 60)).slice(-2) +
-            "</small>" +
-            "</div>";
-
-          trackItem.addEventListener("click", function () {
-            if (currentTrack === track) {
-              if (!audioPlayer.paused) {
-                audioPlayer.pause();
-                playPauseButton.innerHTML = getPlayIcon();
-              } else {
-                audioPlayer.play();
-                playPauseButton.innerHTML = getPauseIcon();
-              }
+        trackItem.addEventListener("click", function () {
+          if (currentTrack === track) {
+            if (!audioPlayer.paused) {
+              audioPlayer.pause();
+              playPauseButton.innerHTML = getPlayIcon();
             } else {
-              currentTrack = track;
-              updatePlayer(track);
+              audioPlayer.play();
+              playPauseButton.innerHTML = getPauseIcon();
             }
-          });
-
-          tracksList.appendChild(trackItem);
+          } else {
+            currentTrack = track;
+            updatePlayer(track);
+          }
         });
 
+        tracksList.appendChild(trackItem);
         playPauseButton.addEventListener("click", function () {
           if (currentTrack) {
             if (audioPlayer.paused) {
@@ -180,4 +136,9 @@ hideActivitiesBtn.addEventListener("click", () => {
 
 showActivitiesBtn.addEventListener("click", () => {
   activities.classList.toggle("d-lg-block");
+});
+
+const volumeSlider = document.getElementById("volumeSlider");
+volumeSlider.addEventListener("change", event => {
+  audio.volume = event.currentTarget.value / 100;
 });

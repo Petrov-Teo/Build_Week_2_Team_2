@@ -101,8 +101,6 @@ footer {
   width: 15%;
 }
 
-
-
 .mobile-navbar {
   position: fixed;
   bottom: 0;
@@ -129,7 +127,6 @@ footer {
 nav {
   background-color: #121212;
 }
-
 
 /* MEDIA QUERY  */
 
@@ -226,28 +223,27 @@ nav {
 /* MEDIA QUERY H1 Testo Artista */
 /* Dimensioni del testo personalizzate per artist-name */
 
-@media(min-width:1200px){
+@media (min-width: 1200px) {
   #artist-name {
-    font-size: 4.5rem; 
+    font-size: 4.5rem;
   }
 }
 
-@media(max-width:1200px){
+@media (max-width: 1200px) {
   #artist-name {
-    font-size: 3rem; 
+    font-size: 3rem;
   }
 }
 
 @media (max-width: 576px) {
   #artist-name {
-      font-size: 2rem; 
+    font-size: 2rem;
   }
 }
 
 /* blocco centrale */
 
-.center-block{
-
+.center-block {
 }
 
 .track-info-container {
@@ -272,70 +268,98 @@ nav {
   text-align: right;
 }
 
-
-main{
-    background: linear-gradient(to bottom, #2d2d2d, #000000);
-
+main {
+  background: linear-gradient(to bottom, #2d2d2d, #000000);
 }
 
 .artist-header {
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    align-items: center;
-    justify-content:space-between;
-    padding: 20px;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.artist-listeners{
+.artist-listeners {
   padding-top: 120px;
 }
 
-.up-buttons{
-    justify-content: space-between;
+.up-buttons {
+  justify-content: space-between;
 }
 
-.my{
-    width: 25px;
-    height: 25px;
+.my {
+  width: 25px;
+  height: 25px;
 }
-.follow{
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.follow-button{
-    margin-right: 15px;
-    margin-left: 15px;
+.follow {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-h2{
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-.popular-tracks h2, .liked-songs h2 {
-    font-size: 1.2rem;
+.follow-button {
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
-.popular-tracks ul, .liked-songs ul {
-    padding: 0;
-    list-style: none;
+h2 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.popular-tracks h2,
+.liked-songs h2 {
+  font-size: 1.2rem;
 }
 
-.popular-tracks ul li, .liked-songs ul li {
-    font-size: 1rem;
-    margin: 10px 0;
+.popular-tracks ul,
+.liked-songs ul {
+  padding: 0;
+  list-style: none;
+}
+
+.popular-tracks ul li,
+.liked-songs ul li {
+  font-size: 1rem;
+  margin: 10px 0;
 }
 
 .img-thumbnail {
-    width: 40px;
-    height: 40px;
-    border-radius: 0;
-    object-fit: cover;
-    padding: 0;
-    margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  object-fit: cover;
+  padding: 0;
+  margin-right: 10px;
 }
 
-.list-unstyled li{
-    justify-content: space-between;
+.list-unstyled li {
+  justify-content: space-between;
+}
+
+h1 {
+  text-shadow: 1px 1px #000000;
+}
+
+.volume-progress {
+  width: 25%;
+  height: 7px;
+}
+
+.song-progress {
+  width: 70%;
+  height: 7px;
+}
+
+.play-btn {
+  background-color: #1db954;
+}
+
+.play-btn:hover {
+  background-color: #1db954 !important;
+}
+
+.volume-slider {
+  width: 25%;
+  accent-color: #1db954;
 }
