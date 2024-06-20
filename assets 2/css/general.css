@@ -40,6 +40,11 @@ li {
   background-color: #232323;
   color: #b3b3b3;
   margin-right: 1em;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  color: #ffffff;
 }
 
 .friends-activity-container {
