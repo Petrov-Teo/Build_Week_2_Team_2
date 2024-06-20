@@ -1007,6 +1007,7 @@
           </button>
           <button class="btn bg-white rounded-circle">
             <svg
+              id="play-pause"
               data-encore-id="icon"
               role="img"
               aria-hidden="true"
@@ -1057,14 +1058,16 @@
           </button>
         </div>
         <div class="d-flex justify-content-center column-gap-3">
-          <label for="progress-bar"><small>1:26</small></label>
+          <label for="progress-bar"
+            ><small id="current-time">0:00</small></label
+          >
           <progress
             id="progressBarSong"
             class="song-bar"
-            value="60"
-            max="100"
+            value="0"
+            max="30"
           ></progress>
-          <label for="progress-bar"><small>4:26</small></label>
+          <label for="progress-bar"><small id="total-time">0:30</small></label>
         </div>
       </div>
       <!-- RIGHT -->
