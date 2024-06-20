@@ -107,6 +107,13 @@ footer {
   background-color: transparent;
 }
 
+nav {
+  background-color: #121212;
+}
+
+
+/* MEDIA QUERY  */
+
 @media screen and (max-width: 767px) {
   main {
     height: (100vh - 160px);
@@ -197,16 +204,55 @@ footer {
   }
 }
 
-nav {
-  background-color: #121212;
+/* MEDIA QUERY H1 Testo Artista */
+/* Dimensioni del testo personalizzate per artist-name */
+
+@media(min-width:1200px){
+  #artist-name {
+    font-size: 4.5rem; 
+  }
 }
 
+@media(max-width:1200px){
+  #artist-name {
+    font-size: 3rem; 
+  }
+}
+
+@media (max-width: 576px) {
+  #artist-name {
+      font-size: 2rem; 
+  }
+}
 
 /* blocco centrale */
 
 .center-block{
 
 }
+
+.track-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-info {
+  flex: 2;
+  display: flex;
+  align-items: center;
+}
+
+.track-plays {
+  flex: 2;
+  text-align: center;
+}
+
+.track-duration {
+  flex: 1;
+  text-align: right;
+}
+
 
 main{
     background: linear-gradient(to bottom, #2d2d2d, #000000);
@@ -222,6 +268,10 @@ main{
     padding: 20px;
 }
 
+.artist-listeners{
+  padding-top: 120px;
+}
+
 .up-buttons{
     justify-content: space-between;
 }
@@ -230,16 +280,6 @@ main{
     width: 25px;
     height: 25px;
 }
-
-
-#artist-name{
-    padding-top: 60px;
-}
-
-.artist-header h1 {
-    font-size: 5rem;
-}
-
 .follow{
     padding-top: 15px;
     padding-bottom: 15px;

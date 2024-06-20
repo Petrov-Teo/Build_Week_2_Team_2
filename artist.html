@@ -824,7 +824,7 @@
       </aside>
 
       <!-- MAIN CONTENT -->
-      <main class="pt-md-3 mt-md-2 mx-2 rounded-2 main-container overflow-auto">
+      <main class="mx-2 rounded-2 main-container">
         <div id="artist-info" class="">
           <div id="artist-header" class="artist-header align-items-center">
             <div class="up-buttons col-12 d-flex">
@@ -865,8 +865,10 @@
                 <span>Lidia Nautilus</span>
               </div>
             </div>
-            <h1 id="artist-name" class="mr-3">Nome Artista</h1>
-            <p id="monthly-listeners">0 ascoltatori mensili</p>
+            <div class="artist-listeners">
+              <h1 id="artist-name" class="mr-3">Nome Artista</h1>
+              <p id="monthly-listeners">0 ascoltatori mensili</p>
+            </div>
           </div>
 
           <div class="follow col-12 d-flex">
@@ -907,12 +909,13 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="liked-songs">
+              <div class="liked-songs mt-5">
                 <h2>Brani che ti piacciono</h2>
-                <div
-                  id="liked-songs-info"
-                  class="d-flex align-items-center"
-                ></div>
+                <ul class="list-unstyled">
+                  <li class="d-flex align-items-center" id="liked-songs-info">
+                    <!-- Informazioni sui brani piaciuti -->
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

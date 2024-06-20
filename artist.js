@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var query = "Queen"; // Cambia questo valore per cercare un artista diverso
+    var query = "Empire of the sun"; // Cambia questo valore per cercare un artista diverso
     var endpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query;
+
+    function getRandomListeners() {
+        return Math.floor(Math.random() * (20000000 - 1000000 + 1)) + 1000000;
+    }
+
+    function getRandomTrackPlays() {
+        return Math.floor(Math.random() * (2000000 - 100000 + 1)) + 100000;
+    }
+
 
     fetch(endpoint)
         .then(function(response) {
@@ -22,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                             '</div>';
 
                 document.getElementById('artist-name').textContent = artist.name;
+                document.getElementById('monthly-listeners').textContent = getRandomListeners().toLocaleString() + " ascoltatori mensili";
+
 
                 // Imposta la "picture_big" dell'artista come sfondo dell'header
                 var artistHeader = document.getElementById('artist-header');
@@ -31,17 +42,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 tracksList.innerHTML = '';
                 tracks.slice(0, 5).forEach(function(track, index) {
                     var trackItem = document.createElement('li');
+                    var randomPlays = getRandomTrackPlays();
                     trackItem.classList.add('d-flex', 'align-items-center', 'mb-3');
-                    trackItem.innerHTML = '<div class="track-info d-flex align-items-center">' +
+                    trackItem.innerHTML = '<div class="col-6 track-info d-flex align-items-center">' +
                                             '<img src="' + track.album.cover + '" alt="cover" class="img-thumbnail">' +
                                             '<div class="ml-3">' +
                                                 '<h6 class="mb-0">' + track.title + '</h6>' +
                                                 '<small>' + track.artist.name + '</small>' +
                                             '</div>' +
                                         '</div>' +
-                                        '<div class="track-duration">' +
+                                        '<div class="col-3 track-plays text-center">' +
+                                            '<small>' + randomPlays.toLocaleString() + ' ascolti</small>' +
+                                        '</div>' +
+                                        '<div class="col-3 track-duration text-right">' +
                                             '<small>' + Math.floor(track.duration / 60) + ':' + ('0' + track.duration % 60).slice(-2) + '</small>' +
                                         '</div>';
+
                     trackItem.addEventListener('click', function() {
                         if (currentTrack === track) {
                             // Se il brano è lo stesso, fermare la riproduzione
@@ -57,8 +73,6 @@ document.addEventListener("DOMContentLoaded", function() {
                             updatePlayer(track);
                          }
                         });
-                    
-                    
 
                     tracksList.appendChild(trackItem);
                 });
