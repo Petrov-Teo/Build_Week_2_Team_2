@@ -83,11 +83,11 @@ function displayResults(data) {
   const artist = tracks[0].artist;
 
   artistInfo.innerHTML = `
-    <div class="artist-card card border border-0" style="background-color: transparent;">
+    <div class="artist-card card border border-0 text-center" style="background-color: transparent;">
       <img src="${artist.picture_medium}" class="card-img-top rounded-circle" alt="${artist.name}">
       <div class="card-body">
         <div class="artist-header">
-          <h5 class="card-title" style="color: white;">${artist.name}</h5>
+          <h5 class="card-title" style="color: white;">${artist.name}</h5> 
           <div class="dropdown song-card-dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${artist.id}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               &#x22EE;

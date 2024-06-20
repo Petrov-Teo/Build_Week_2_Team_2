@@ -207,18 +207,6 @@ h2 {
   height: auto;
 }
 
-.artist-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.artist-header h5 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .dropdown.song-card-dropdown {
   display: inline-block;
 }
@@ -244,6 +232,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -310,6 +299,7 @@ h2 {
   }
   .artist-card{
     border: none !important;
+    text-align: center;
   }
 
   .song-card {
