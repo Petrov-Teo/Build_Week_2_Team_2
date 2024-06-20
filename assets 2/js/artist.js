@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     audioPlayer.play();
                     playPauseButton.innerHTML = getPauseIcon();
                     document.querySelector('footer').style.display = 'flex';
-                    updateProgressBar();  // Inizia a aggiornare la barra di progresso
+                    updateProgressBar();  // Inizia ad aggiornare la barra di progresso
                 }
 
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     var totalTimeLabel = document.getElementById('total-time');
                     progressBar.value = 0;
                     var duration = 30; // Durata in secondi della preview
-                    totalTimeLabel.textContent = "0:30"; // Imposta la durata totale
+                    totalTimeLabel.textContent = "0:30"; // durata totale
 
                     var interval = setInterval(function() {
                         if (audioPlayer.paused || audioPlayer.currentTime >= duration) {
