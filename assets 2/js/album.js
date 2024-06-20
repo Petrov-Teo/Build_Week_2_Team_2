@@ -16,18 +16,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const durationTime = document.getElementById("durationTime");
 
   // URL
-  const serverURL = "";
-  cl(imgAlbum);
-  cl(albumName);
-  cl(imgArtist);
-  cl(artistName);
-  cl(albumYear);
-  cl(numberSongsAlbum);
-  cl(totalAlbumDuration);
-  cl(numberSong);
-  cl(titleSong);
-  cl(reproductions);
-  cl(durationTime);
-});
+  const query = "Yellowcard";
+  const serverURL = "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query;
 
-fetch();
+  fetch(serverURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      const albumN = data.data[0].album;
+      const artist = data.data[1].artist;
+      const songsAlbum = data.data;
+      console.log(data);
+
+      cl(albumN);
+      cl(songsAlbum);
+      cl(artist);
+
+      imgAlbum.src = albumN.cover_big;
+      albumName.innerText = albumN.title;
+      imgArtist.src = artist.picture_medium;
+      artistName.innerText = artist.name;
+      numberSongsAlbum.innerText = songsAlbum.length - 1 + " " + "Brani";
+
+      cl(albumName);
+
+      //   imgAlbum.src = album.cover_medium;
+      //   albumName.textContent = album.title;
+      //   artistName.textContent = album.artist.name;
+      //   albumYear.textContent = new Date(album.release_date).getFullYear();
+      //   numberSongsAlbum.textContent = tracks.length;
+    });
+});
