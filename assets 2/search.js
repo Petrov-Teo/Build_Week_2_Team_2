@@ -83,7 +83,7 @@ function displayResults(data) {
   const artist = tracks[0].artist;
 
   artistInfo.innerHTML = `
-    <div class="artist-card card" style="background-color: transparent;">
+    <div class="artist-card card border border-0" style="background-color: transparent;">
       <img src="${artist.picture_medium}" class="card-img-top rounded-circle" alt="${artist.name}">
       <div class="card-body">
         <div class="artist-header">
@@ -113,9 +113,8 @@ function displayResults(data) {
       <div class="card-body">
         <h5 class="card-title">${track.title}</h5>
         <p class="card-text">Album: ${track.album.title}</p>
-       
       </div>
-    `; //<a href="${track.link}" class="btn btn-primary" target="_blank">Listen on Deezer</a>
+    `;
     songsInfo.appendChild(songDiv);
   });
 
