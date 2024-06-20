@@ -530,7 +530,7 @@
                         </button>
                     </div>
                     <div class="d-flex align-items-baseline d-none d-md-flex">
-                        <div class="p-2">
+                        <div class="p-2 text-black">
                             <a class="iscriviti" href="#">Iscriviti</a>
                         </div>
                         <div class="p-2">
@@ -552,7 +552,7 @@
                                 </svg>
                             </div>
                             <div class="d-md-flex col-10 ">
-                                <img src=" ./assets 2/imgs/main/image-11.jpg" alt="album" width="100%">
+                                <img id="imgAlbum" src=" ./assets 2/imgs/main/image-11.jpg" alt="album" width="100%">
                             </div>
                         </div>
                         <!-- DESCRIZIONE ALBUM -->
@@ -560,28 +560,26 @@
                             <div class="d-none d-md-block">
                                 <p>Album</p>
                             </div>
-                            <h2 id="titoloAlbum">Titolo Album </h2>
+                            <h1 id="titoloAlbum">Titolo Album </h1>
                             <div class="container">
                                 <div class="d-md-flex md-row">
-                                    <div id=" imgArtistAlbum col-md-3 p-3 mb-5 bg-body-tertiary rounded">
-                                        <img class="imgArtistAlbum" src="./assets 2/imgs/main/image-11.jpg"
-                                            alt="Album Pic" width="30px">
+                                    <div col-md-3 p-3 mb-5 bg-body-tertiary rounded">
+                                        <img id="imgArtist" class=" imgArtistAlbum"
+                                            src="./assets 2/imgs/main/image-11.jpg" alt="Album Pic" width="30px">
                                         <span id="nomeArtistaAlbum" class="nomeArtistaAlbum m-0 ps-1">Nome</span>
                                     </div>
 
                                     <!-- DIV DETTAGLI ALBUM  -->
                                     <div class="d-md-flex md-row align-items-center">
+
                                         <div>
-                                            <span class="col ps-1">Album</span>
+                                            <span id="albumYear" class="col ps-1">Anno</span>
                                         </div>
                                         <div>
-                                            <span class="col ps-1">Anno</span>
+                                            <span id="numberSongs" class="d-none d-md-block col ps-1">N.Brani</span>
                                         </div>
                                         <div>
-                                            <span class="d-none d-md-block col ps-1">N.Brani</span>
-                                        </div>
-                                        <div>
-                                            <span class="d-none d-md-block col ps-1">tot.Album</span>
+                                            <span id="albumLength" class="d-none d-md-block col ps-1">tot.Album</span>
                                         </div>
                                     </div>
                                 </div>
@@ -620,7 +618,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-none d-md-block container  border-bottom border-light">
+                    <div class="d-none d-md-block container border-bottom border-light textColor">
                         <div class="d-flex row">
                             <div class="col-1 text-center">
                                 <h6>#</h6>
@@ -628,8 +626,8 @@
                             <div class="col-6">
                                 <h6>TITOLO</h6>
                             </div>
-                            <div class="col-3">
-                                <h6>RIPRODUZIONE</h6>
+                            <div class="col-3 text-end">
+                                <h6 class="textColor">RIPRODUZIONE</h6>
                             </div>
                             <div class="col-2 text-center ps-3">
                                 <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
@@ -644,9 +642,24 @@
                             </div>
                         </div>
                     </div>
-                </section>
-                <section class="container border border-top border-warning">
+                    <div class="container pt-3">
+                        <div class="d-flex row align-items-center">
+                            <div class="col-1 text-center textColor">
+                                <p id="numberSong">#1</p>
+                            </div>
+                            <div class="d-flex-column col-6 ">
+                                <p id="titleSong">Nome Canzone</p>
+                                <p class="textColor">Nome Artista</p>
+                            </div>
+                            <div class="col-3 text-end textColor">
+                                <p id="reproductions">646546516</p>
+                            </div>
+                            <div class="col-2 text-center ps-3 textColor">
+                                <p id="durationTime">2:24</p>
+                            </div>
+                        </div>
 
+                    </div>
                 </section>
             </div>
 
@@ -863,6 +876,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+    <script src="./assets 2/js/album.js"></script>
     <!-- Import JS personalizzati -->
 
 </body>

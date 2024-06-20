@@ -107,7 +107,10 @@ svg:hover {
 .ImgDiv {
   min-width: 232px;
 }
+.textColor {
+  color: #b3b3b3;
+}
 
-br {
-  border-bottom: #b3b3b3;
+.iscriviti {
+  color: #000000;
 }
