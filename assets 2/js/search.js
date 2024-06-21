@@ -144,3 +144,15 @@ function getRandomColor() {
 document.querySelectorAll(".static-card").forEach(card => {
   card.style.backgroundColor = getRandomColor();
 });
+
+const activities = document.getElementById("activities");
+const hideActivitiesBtn = document.getElementById("hideActivitiesBtn");
+const showActivitiesBtn = document.getElementById("showActivitiesBtn");
+
+hideActivitiesBtn.addEventListener("click", () => {
+  activities.classList.remove("d-lg-block");
+});
+
+showActivitiesBtn.addEventListener("click", () => {
+  activities.classList.toggle("d-lg-block");
+});
