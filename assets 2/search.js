@@ -1,5 +1,15 @@
 const apiKey = "283b2ef6c5msha650b13812608b0p174f2fjsn2d49a13a9160";
 
+document.addEventListener("DOMContentLoaded", function () {
+  const nextBtn = document.querySelector(".nextBtn");
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      location.reload();
+    });
+  }
+});
+
 document.getElementById("search-button").addEventListener("click", function () {
   const query = document.getElementById("search-input").value;
   hideStaticCards();
@@ -62,14 +72,15 @@ function displayResults(data) {
   artistInfo.id = "artist-info";
   songsInfo.id = "songs-info";
 
-  artistInfo.classList.add("artist-info");
-  songsInfo.classList.add("songs-info");
+  artistInfo.classList.add("artist-info", "me-md-5");
+  songsInfo.classList.add("songs-info", "ms-md-5");
 
   artistInfo.style.flex = "1";
   songsInfo.style.flex = "2";
   songsInfo.style.display = "flex";
   songsInfo.style.flexDirection = "column";
   songsInfo.style.flexWrap = "nowrap";
+  songsInfo.style.marginLeft = "0%";
 
   const artist = tracks[0].artist;
 
@@ -79,7 +90,7 @@ function displayResults(data) {
       <img src="${artist.picture_medium}" class="card-img-top rounded-circle" alt="${artist.name}">
       <div class="card-body">
         <div class="artist-header">
-          <h5 class="card-title" style="color: white;">${artist.name}</h5> 
+          <h5 class="card-title" style="color: white;">${artist.name}</h5>
           <div class="dropdown song-card-dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${artist.id}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               &#x22EE;
@@ -97,26 +108,29 @@ function displayResults(data) {
 
   const songsTitle = document.createElement("h2");
   songsTitle.style.color = "white";
-  songsTitle.style.textAlign = "start";
-  songsTitle.style.marginLeft = "31%";
+  songsTitle.style.textAlign = "center";
+  songsTitle.style.marginLeft = "0";
   songsTitle.textContent = "Songs";
   songsInfo.appendChild(songsTitle);
 
   tracks.forEach((track) => {
     const songDiv = document.createElement("div");
-    songDiv.classList.add("song-card", "card", "card-title");
-    songDiv.style.marginBottom = "10px";
-    songDiv.style.marginLeft = "30%";
-    songDiv.style.display = "flex";
-    songDiv.style.alignItems = "flex-start";
+    songDiv.classList.add("song-card", "card", "mb-3");
+    songDiv.style.maxWidth = "540px";
+    songDiv.style.marginLeft = "0";
+    songDiv.style.backgroundColor = "transparent";
     songDiv.innerHTML = `
-      <div class="image-container">
-        <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
-        <div class="play-button">&#9658;</div>
-      </div>
-      <div class="text-container" style="padding-left: 0px;">
-        <h5 class="card-title">${track.title}</h5>
-        <p class="card-text">Album: ${track.album.title}</p>
+      <div class="row g-0 border border-0">
+        <div class="col-md-4 position-relative">
+          <img src="${track.album.cover_medium}" class="img-fluid rounded-start" alt="${track.title}">
+          <span class="play-button">&#9658;</span>
+        </div>
+        <div class="col-md-8 border border-0">
+          <div class="card-body ml-5 border border-0">
+            <h5 class="card-title" style="color: white;">${track.title}</h5>
+            <p class="card-text" style="color: white;">Album: ${track.album.title}</p>
+          </div>
+        </div>
       </div>
     `;
     songsInfo.appendChild(songDiv);
