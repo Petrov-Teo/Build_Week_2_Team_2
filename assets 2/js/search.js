@@ -1,21 +1,33 @@
 const apiKey = "283b2ef6c5msha650b13812608b0p174f2fjsn2d49a13a9160";
 
+document.addEventListener("DOMContentLoaded", function () {
+  const nextBtn = document.querySelector(".nextBtn");
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      location.reload();
+    });
+  }
+});
+
 document.getElementById("search-button").addEventListener("click", function () {
   const query = document.getElementById("search-input").value;
   hideStaticCards();
   searchDeezer(query);
 });
 
-document.getElementById("search-input").addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    const query = event.target.value;
-    hideStaticCards();
-    searchDeezer(query);
-  }
-});
+document
+  .getElementById("search-input")
+  .addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      const query = event.target.value;
+      hideStaticCards();
+      searchDeezer(query);
+    }
+  });
 
 function hideStaticCards() {
-  document.querySelectorAll(".static-card").forEach(card => {
+  document.querySelectorAll(".static-card").forEach((card) => {
     card.style.display = "none";
   });
 
@@ -30,29 +42,14 @@ function searchDeezer(query) {
     method: "GET",
     headers: {
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
-    }
+      "x-rapidapi-key": apiKey,
+    },
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       displayResults(data);
-      displayTitles();
     })
-    .catch(error => console.error("Error:", error));
-}
-
-function displayTitles() {
-  const titlesContainer = document.getElementById("titles-container");
-  titlesContainer.innerHTML = `
-    <div class="titles" style="display: flex; justify-content: space-between; width: 100%;">
-      <h2 style="color: white; flex: 1; text-align: start; margin-left: 1%;">Artist</h2>
-      <h2 style="color: white; flex: 1; text-align: start; margin-right: 42%;">Songs</h2>
-    </div>
-  `;
-  titlesContainer.style.display = "flex";
-  titlesContainer.style.justifyContent = "space-between";
-  titlesContainer.style.padding = "10px 0";
-  titlesContainer.style.marginBottom = "20px";
+    .catch((error) => console.error("Error:", error));
 }
 
 function displayResults(data) {
@@ -75,17 +72,25 @@ function displayResults(data) {
   artistInfo.id = "artist-info";
   songsInfo.id = "songs-info";
 
-  artistInfo.classList.add("artist-info");
-  songsInfo.classList.add("songs-info");
+  artistInfo.classList.add("artist-info", "me-md-5");
+  songsInfo.classList.add("songs-info", "ms-md-5");
+
+  artistInfo.style.flex = "1";
+  songsInfo.style.flex = "2";
+  songsInfo.style.display = "flex";
+  songsInfo.style.flexDirection = "column";
+  songsInfo.style.flexWrap = "nowrap";
+  songsInfo.style.marginLeft = "0%";
 
   const artist = tracks[0].artist;
 
   artistInfo.innerHTML = `
+    <h2 style="color: white; text-align: center; margin-left: 1%;">Artist</h2>
     <div class="artist-card card border border-0 text-center" style="background-color: transparent;">
       <img src="${artist.picture_medium}" class="card-img-top rounded-circle" alt="${artist.name}">
       <div class="card-body">
         <div class="artist-header">
-          <h5 class="card-title" style="color: white;">${artist.name}</h5> 
+          <h5 class="card-title" style="color: white;">${artist.name}</h5>
           <div class="dropdown song-card-dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${artist.id}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               &#x22EE;
@@ -101,16 +106,31 @@ function displayResults(data) {
     </div>
   `;
 
-  tracks.forEach(track => {
+  const songsTitle = document.createElement("h2");
+  songsTitle.style.color = "white";
+  songsTitle.style.textAlign = "center";
+  songsTitle.style.marginLeft = "0";
+  songsTitle.textContent = "Songs";
+  songsInfo.appendChild(songsTitle);
+
+  tracks.forEach((track) => {
     const songDiv = document.createElement("div");
-    songDiv.classList.add("song-card", "card", "card-title");
+    songDiv.classList.add("song-card", "card", "mb-3");
+    songDiv.style.maxWidth = "540px";
+    songDiv.style.marginLeft = "0";
+    songDiv.style.backgroundColor = "transparent";
     songDiv.innerHTML = `
-      <div class="image-container">
-        <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">${track.title}</h5>
-        <p class="card-text">Album: ${track.album.title}</p>
+      <div class="row g-0 border border-0">
+        <div class="col-md-4 position-relative">
+          <img src="${track.album.cover_medium}" class="img-fluid rounded-start" alt="${track.title}">
+          <span class="play-button">&#9658;</span>
+        </div>
+        <div class="col-md-8 border border-0">
+          <div class="card-body ml-5 border border-0">
+            <h5 class="card-title" style="color: white;">${track.title}</h5>
+            <p class="card-text" style="color: white;">Album: ${track.album.title}</p>
+          </div>
+        </div>
       </div>
     `;
     songsInfo.appendChild(songDiv);
@@ -129,6 +149,6 @@ function getRandomColor() {
   return color;
 }
 
-document.querySelectorAll(".static-card").forEach(card => {
+document.querySelectorAll(".static-card").forEach((card) => {
   card.style.backgroundColor = getRandomColor();
 });
