@@ -183,7 +183,6 @@ window.addEventListener("DOMContentLoaded", () => {
           const discoverArtistHeading = document.getElementById("discoverArtistHeading");
           discoverArtistHeading.innerText = `Scopri un nuovo artista - ${artista.name}`;
           const artistBox = document.createElement("div");
-          artistBox.className = "text-center col-12 col-md-6 col-xl-3";
           artistBox.style.width = "";
           artistBoxImg = document.createElement("img");
           artistBoxImg.src = artista.picture_xl;
@@ -195,7 +194,11 @@ window.addEventListener("DOMContentLoaded", () => {
           artistBoxTitle.innerText = artista.name;
           artistBoxBody.appendChild(artistBoxTitle);
           artistBox.append(artistBoxImg, artistBoxBody);
-          discoverArtistRow.appendChild(artistBox);
+          const artistBoxAnchor = document.createElement("a");
+          artistBoxAnchor.className = "text-center col-12 col-md-6 col-xl-3";
+          artistBoxAnchor.setAttribute("href", `./artist.html?id=${artista.id}`);
+          artistBoxAnchor.appendChild(artistBox);
+          discoverArtistRow.appendChild(artistBoxAnchor);
 
           fetch(artista.tracklist)
             .then(response => {
