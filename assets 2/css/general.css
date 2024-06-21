@@ -137,8 +137,8 @@ footer {
   }
 
   .playlists-container {
-    overflow: auto;
-    height: calc(100vh - 375px);
+    overflow: hidden;
+    height: calc(100vh - 384px);
   }
 
   main {
