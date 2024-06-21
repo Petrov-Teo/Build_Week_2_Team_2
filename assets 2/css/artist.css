@@ -243,6 +243,7 @@ nav {
 
 /* blocco centrale */
 
+
 .track-info-container {
   display: flex;
   justify-content: space-between;
@@ -255,9 +256,8 @@ nav {
   align-items: center;
 }
 
-.track-plays {
-  flex: 2;
-  text-align: center;
+.songDuration{
+  margin-left: 100px;
 }
 
 .track-duration {
