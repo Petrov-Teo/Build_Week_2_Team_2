@@ -5,23 +5,26 @@ const URL = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
 console.log(id);
 
 document.addEventListener("DOMContentLoaded", function () {
-  var query = "Empire of the sun";
-  var endpoint = "https://striveschool-api.herokuapp.com/api/deezer/artist/" + query;
+  function getRandomTrackPlays() {
+    return Math.floor(Math.random() * (2000000 - 100000 + 1)) + 100000;
+  }
+
+  const tracksList = document.getElementById("tracks-list");
+  const pageTitle = document.querySelector("title");
 
   fetch(URL + id)
     .then(function (response) {
       return response.json();
     })
-    .then(function (data) {
-      console.log("data", data);
-      if (data /* && data.data && data.data.length > 0 */) {
-        var artist = data;
-        var tracks = data.data;
-        var audioPlayer = document.getElementById("audio-player");
-        var playPauseButton = document.getElementById("play-pause");
-        var currentTrack = null;
+    .then(function (objArtist) {
+      console.log("objArtist", objArtist);
+      if (objArtist) {
+        const artist = objArtist;
+        const audioPlayer = document.getElementById("audio-player");
+        const playPauseButton = document.getElementById("play-pause");
+        let currentTrack = null;
 
-        var likedSongsInfo = document.getElementById("liked-songs-info");
+        const likedSongsInfo = document.getElementById("liked-songs-info");
         likedSongsInfo.innerHTML =
           '<img src="' +
           artist.picture_medium +
@@ -33,45 +36,88 @@ document.addEventListener("DOMContentLoaded", function () {
           "</p>" +
           "</div>";
 
-        document.getElementById("artist-name").textContent = artist.name;
-        document.getElementById("monthly-listeners").textContent = `${artist.nb_fan.toLocaleString()} ascoltatori mensili`;
+        document.getElementById("artist-name").innerText = artist.name;
+        document.getElementById("monthly-listeners").innerText = `${artist.nb_fan.toLocaleString()} ascoltatori mensili`;
 
         const artistHeader = document.getElementById("artist-header");
-        artistHeader.style.backgroundImage = "url(" + artist.picture_xl + ")";
+        artistHeader.style.backgroundImage = `url(${artist.picture_xl})`;
 
-        trackItem.addEventListener("click", function () {
-          if (currentTrack === track) {
-            if (!audioPlayer.paused) {
-              audioPlayer.pause();
-              playPauseButton.innerHTML = getPlayIcon();
+        const tracksList = document.getElementById("tracks-list");
+        tracksList.innerHTML = "";
+
+        const artistTracklist = artist.tracklist;
+
+        pageTitle.innerText = `${artist.name} | Spotify`;
+
+        fetch(artistTracklist)
+          .then(response => {
+            if (response.ok) {
+              return response.json();
             } else {
-              audioPlayer.play();
-              playPauseButton.innerHTML = getPauseIcon();
+              throw new Error("Couldn't get data");
             }
-          } else {
-            currentTrack = track;
-            updatePlayer(track);
-          }
-        });
+          })
+          .then(arrayCanzoni => {
+            console.log(arrayCanzoni);
+            const top10Songs = arrayCanzoni.data.slice(0, 10);
+            console.log("top 10", top10Songs);
+            top10Songs.forEach((song, index) => {
+              const top10SongContainer = document.createElement("div");
+              top10SongContainer.className = "d-flex justify-content-between align-items-center mb-3";
+              const top10SongLeftContainer = document.createElement("div");
+              top10SongLeftContainer.className = "d-flex align-items-center";
+              const top10SongRank = document.createElement("p");
+              top10SongRank.innerText = index + 1;
+              top10SongRank.className = "me-3";
+              const top10SongImg = document.createElement("img");
+              top10SongImg.style.width = "75px";
+              top10SongImg.src = song.album.cover_medium;
+              top10SongImg.className = "me-3";
+              const top10SongTitle = document.createElement("p");
+              top10SongTitle.innerText = song.title;
+              top10SongLeftContainer.append(top10SongRank, top10SongImg, top10SongTitle);
 
-        tracksList.appendChild(trackItem);
+              const top10SongDuration = document.createElement("p");
+              top10SongDuration.innerText = `${Math.floor(song.duration / 60)}:${song.duration % 60}`;
+              top10SongContainer.append(top10SongLeftContainer, top10SongDuration);
+              tracksList.append(top10SongContainer);
+
+              top10SongContainer.addEventListener("click", function () {
+                if (currentTrack === song) {
+                  if (!audioPlayer.paused) {
+                    audioPlayer.pause();
+                    playPauseButton.innerHTML = getPlayIcon();
+                  } else {
+                    audioPlayer.play();
+                    playPauseButton.innerHTML = getPauseIcon();
+                  }
+                } else {
+                  currentTrack = song;
+                  updatePlayer(song);
+                }
+              });
+            });
+          });
+
         playPauseButton.addEventListener("click", function () {
           if (currentTrack) {
             if (audioPlayer.paused) {
               audioPlayer.play();
               playPauseButton.innerHTML = getPauseIcon();
+              updateProgressBar();
             } else {
               audioPlayer.pause();
               playPauseButton.innerHTML = getPlayIcon();
+              updateProgressBar();
             }
           }
         });
 
-        function updatePlayer(track) {
-          document.querySelector(".player-cover").src = track.album.cover;
-          document.querySelector(".player-title").textContent = track.title;
-          document.querySelector(".player-artist").textContent = track.artist.name;
-          audioPlayer.src = track.preview;
+        function updatePlayer(song) {
+          document.querySelector(".player-cover").src = song.album.cover;
+          document.querySelector(".player-title").textContent = song.title;
+          document.querySelector(".player-artist").textContent = song.artist.name;
+          audioPlayer.src = song.preview;
           audioPlayer.play();
           playPauseButton.innerHTML = getPauseIcon();
           document.querySelector("footer").style.display = "flex";
@@ -79,21 +125,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         function updateProgressBar() {
-          var progressBar = document.getElementById("progressBarSong");
-          var currentTimeLabel = document.getElementById("current-time");
-          var totalTimeLabel = document.getElementById("total-time");
-          progressBar.value = 0;
-          var duration = 30; // Durata in secondi della preview
-          totalTimeLabel.textContent = "0:30"; // Imposta la durata totale
+          const songBar = document.getElementById("songBar");
+          const currentTimeLabel = document.getElementById("current-time");
+          const totalTimeLabel = document.getElementById("total-time");
+          /* songBar.style.width = 0; */
+          const duration = 30; // Durata in secondi della preview
+          totalTimeLabel.innerText = "0:30"; // Imposta la durata totale
 
           var interval = setInterval(function () {
             if (audioPlayer.paused || audioPlayer.currentTime >= duration) {
               clearInterval(interval);
+              playPauseButton.innerHTML = getPlayIcon();
             } else {
-              progressBar.value = audioPlayer.currentTime;
+              songBar.style.width = `${(audioPlayer.currentTime / 30) * 100}%`;
               currentTimeLabel.textContent = formatTime(audioPlayer.currentTime);
             }
-          }, 1000);
+          }, 300);
         }
 
         function formatTime(seconds) {
@@ -117,6 +164,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "</svg>"
           );
         }
+
+        const volumeSlider = document.getElementById("volumeSlider");
+        volumeSlider.addEventListener("change", event => {
+          audioPlayer.volume = event.currentTarget.value / 100;
+        });
       } else {
         console.error("No artist data found");
       }
@@ -136,9 +188,4 @@ hideActivitiesBtn.addEventListener("click", () => {
 
 showActivitiesBtn.addEventListener("click", () => {
   activities.classList.toggle("d-lg-block");
-});
-
-const volumeSlider = document.getElementById("volumeSlider");
-volumeSlider.addEventListener("change", event => {
-  audio.volume = event.currentTarget.value / 100;
 });
