@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const playerTitle = document.querySelector(".player-title");
   const playerArtist = document.querySelector(".player-artist");
   const imgAlbumMobile = document.getElementById("imgAlbumMobile");
+  const mobilePlayerTitle = document.getElementById("mobilePlayerTitle");
   const currentTimeLabel = document.getElementById("current-time");
   const totalTimeLabel = document.getElementById("total-time");
   const progressBar = document.getElementById("songBar");
-  const mobilePlayerCover = document.querySelector(".mobile-player img");
-  const mobilePlayerTitle = document.querySelector(".mobile-player .line-clamp");
 
   const audioPlayer = document.getElementById("audio-player");
   const playPauseButton = document.getElementById("play-pause");
+  const mobilePlayPauseButton = document.getElementById("mobile-play-pause");
   let currentTrack = null;
 
   const params = new URLSearchParams(window.location.search);
@@ -94,15 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
       if (audioPlayer.paused) {
         audioPlayer.play();
         playPauseButton.innerHTML = getPauseIcon();
+        mobilePlayPauseButton.innerHTML = getPauseIcon();
       } else {
         audioPlayer.pause();
         playPauseButton.innerHTML = getPlayIcon();
+        mobilePlayPauseButton.innerHTML = getPlayIcon();
       }
     } else {
       currentTrack = track;
       audioPlayer.src = track.preview;
       audioPlayer.play();
       playPauseButton.innerHTML = getPauseIcon();
+      mobilePlayPauseButton.innerHTML = getPauseIcon();
       updatePlayerUI(track);
     }
   }
@@ -110,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function updatePlayerUI(track) {
     imgFooter.src = track.album.cover_big;
     imgAlbumMobile.src = track.album.cover_big;
-    mobilePlayerCover.src = track.album.cover_big;
     playerTitle.textContent = track.title;
     mobilePlayerTitle.textContent = track.title;
     playerArtist.textContent = track.artist.name;
@@ -122,9 +124,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (audioPlayer.paused) {
       audioPlayer.play();
       playPauseButton.innerHTML = getPauseIcon();
+      mobilePlayPauseButton.innerHTML = getPauseIcon();
     } else {
       audioPlayer.pause();
       playPauseButton.innerHTML = getPlayIcon();
+      mobilePlayPauseButton.innerHTML = getPlayIcon();
+    }
+  });
+
+  mobilePlayPauseButton.parentElement.addEventListener("click", function () {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playPauseButton.innerHTML = getPauseIcon();
+      mobilePlayPauseButton.innerHTML = getPauseIcon();
+    } else {
+      audioPlayer.pause();
+      playPauseButton.innerHTML = getPlayIcon();
+      mobilePlayPauseButton.innerHTML = getPlayIcon();
     }
   });
 
@@ -144,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getPlayIcon() {
     return (
-      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-play-fill" viewBox="2 2 12 12">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-play-fill" viewBox="2 2 12 12">' +
       '<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>' +
       "</svg>"
     );
@@ -152,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getPauseIcon() {
     return (
-      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
       '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
       "</svg>"
     );
