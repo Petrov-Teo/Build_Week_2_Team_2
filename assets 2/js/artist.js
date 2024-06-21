@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
   
     const tracksList = document.getElementById("tracks-list");
     const pageTitle = document.querySelector("title");
+
+    const mobilePlayerImg = document.querySelector(".mobile-player img");
+    const mobilePlayerTitle = document.querySelector(".mobile-player .line-clamp");
+    const mobilePlayerPlayButtonContainer = document.querySelector(".mobile-player .btn:nth-child(3)");
+
+
   
     fetch(URL + id)
       .then(function (response) {
@@ -100,9 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (!audioPlayer.paused) {
                       audioPlayer.pause();
                       playPauseButton.innerHTML = getPlayIcon();
+                      mobilePlayerPlayButtonContainer.innerHTML = getPlayIconMobile();
+
                     } else {
                       audioPlayer.play();
                       playPauseButton.innerHTML = getPauseIcon();
+                      mobilePlayerPlayButtonContainer.innerHTML = getPauseIconMobile();
+
                     }
                   } else {
                     currentTrack = song;
@@ -117,14 +127,35 @@ document.addEventListener("DOMContentLoaded", function () {
               if (audioPlayer.paused) {
                 audioPlayer.play();
                 playPauseButton.innerHTML = getPauseIcon();
+                mobilePlayerPlayButtonContainer.innerHTML = getPauseIconMobile();
+
                 updateProgressBar();
               } else {
                 audioPlayer.pause();
                 playPauseButton.innerHTML = getPlayIcon();
+                mobilePlayerPlayButtonContainer.innerHTML = getPlayIconMobile();
+
                 updateProgressBar();
               }
             }
           });
+
+          mobilePlayerPlayButtonContainer.addEventListener("click", function () {
+            if (currentTrack) {
+              if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseButton.innerHTML = getPauseIcon();
+                mobilePlayerPlayButtonContainer.innerHTML = getPauseIconMobile();
+              } else {
+                audioPlayer.pause();
+                playPauseButton.innerHTML = getPlayIcon();
+                mobilePlayerPlayButtonContainer.innerHTML = getPlayIconMobile();
+              }
+            }
+          });
+  
+  
+  
   
           function updatePlayer(song) {
             document.querySelector(".player-cover").src = song.album.cover;
@@ -133,6 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
             audioPlayer.src = song.preview;
             audioPlayer.play();
             playPauseButton.innerHTML = getPauseIcon();
+            mobilePlayerImg.src = song.album.cover_medium;
+            mobilePlayerTitle.textContent = song.title;
+            mobilePlayerPlayButtonContainer.innerHTML = getPauseIconMobile();
             document.querySelector("footer").style.display = "flex";
             updateProgressBar(); // Inizia a aggiornare la barra di progresso
           }
@@ -149,6 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
               if (audioPlayer.paused || audioPlayer.currentTime >= duration) {
                 clearInterval(interval);
                 playPauseButton.innerHTML = getPlayIcon();
+                mobilePlayerPlayButtonContainer.innerHTML = getPlayIconMobile();
+
               } else {
                 songBar.style.width = `${(audioPlayer.currentTime / 30) * 100}%`;
                 currentTimeLabel.textContent = formatTime(audioPlayer.currentTime);
@@ -175,6 +211,22 @@ document.addEventListener("DOMContentLoaded", function () {
               '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
               '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
               "</svg>"
+            );
+          }
+
+          function getPlayIconMobile() {
+            return (
+              '<svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="25" height="25" fill="#ffffff">' +
+              '<path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>' +
+              '</svg>'
+            );
+          }
+  
+          function getPauseIconMobile() {
+            return (
+              '<svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="25" height="25" fill="#ffffff">' +
+              '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
+              '</svg>'
             );
           }
   
