@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cl = function (cl) {
     console.log(cl);
   };
-  //   DOM SELECTION
+
+  // DOM SELECTION
   const imgAlbum = document.getElementById("imgAlbum");
   const albumName = document.getElementById("titoloAlbum");
   const imgArtist = document.getElementById("imgArtist");
@@ -14,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const imgFooter = document.getElementById("imgFooter");
   const imgAlbumMobile = document.getElementById("imgAlbumMobile");
 
-  cl(treeeDotsVertical);
+  const audioPlayer = document.getElementById("audio-player");
+  let currentTrack = null;
 
   // URL
   const params = new URLSearchParams(window.location.search);
@@ -73,24 +75,55 @@ document.addEventListener("DOMContentLoaded", function () {
         // creo la durata della canzone
         const durata = document.createElement("div");
         durata.className = "d-none d-md-block col-md-2 text-center ps-3 textColor";
-        durata.innerText = `${Math.floor(canzone.duration / 60)}:${canzone.duration % 60}`;
+        durata.innerText = `${Math.floor(canzone.duration / 60)}:${(canzone.duration % 60).toString().padStart(2, '0')}`;
 
         songContainerRow.append(albumNumberSong, songDetails, riproduzioni, durata);
         cl(canzone);
         songContainer.appendChild(songContainerRow);
         elencoBraniAlbum.appendChild(songContainer);
+
+        // Aggiungi event listener per la traccia
+        songContainerRow.addEventListener("click", function () {
+          playTrack(canzone);
+        });
       });
     });
+
+  function playTrack(track) {
+    if (currentTrack === track) {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    } else {
+      currentTrack = track;
+      audioPlayer.src = track.preview;
+      audioPlayer.play();
+      updatePlayerUI(track);
+    }
+  }
+
+  function updatePlayerUI(track) {
+    // Aggiorna l'interfaccia utente del player con le informazioni della traccia corrente
+    imgFooter.src = track.album.cover_big;
+    imgAlbumMobile.src = track.album.cover_big;
+    document.querySelector(".player-title").textContent = track.title;
+    document.querySelector(".player-artist").textContent = track.artist.name;
+    // Mostra il player se è nascosto
+    document.querySelector("footer").style.display = "flex";
+  }
+
+  const activities = document.getElementById("activities");
+  const hideActivitiesBtn = document.getElementById("hideActivitiesBtn");
+  const showActivitiesBtn = document.getElementById("showActivitiesBtn");
+
+  hideActivitiesBtn.addEventListener("click", () => {
+    activities.classList.remove("d-lg-block");
+  });
+
+  showActivitiesBtn.addEventListener("click", () => {
+    activities.classList.toggle("d-lg-block");
+  });
 });
 
-const activities = document.getElementById("activities");
-const hideActivitiesBtn = document.getElementById("hideActivitiesBtn");
-const showActivitiesBtn = document.getElementById("showActivitiesBtn");
-
-hideActivitiesBtn.addEventListener("click", () => {
-  activities.classList.remove("d-lg-block");
-});
-
-showActivitiesBtn.addEventListener("click", () => {
-  activities.classList.toggle("d-lg-block");
-});
