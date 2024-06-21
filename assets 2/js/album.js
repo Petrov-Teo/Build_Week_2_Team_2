@@ -93,19 +93,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentTrack === track) {
       if (audioPlayer.paused) {
         audioPlayer.play();
-        playPauseButton.innerHTML = getPauseIcon();
-        mobilePlayPauseButton.innerHTML = getPauseIcon();
+        playPauseButton.innerHTML = getPauseIcon("black");
+        mobilePlayPauseButton.innerHTML = getPauseIcon("white");
       } else {
         audioPlayer.pause();
-        playPauseButton.innerHTML = getPlayIcon();
-        mobilePlayPauseButton.innerHTML = getPlayIcon();
+        playPauseButton.innerHTML = getPlayIcon("black");
+        mobilePlayPauseButton.innerHTML = getPlayIcon("white");
       }
     } else {
       currentTrack = track;
       audioPlayer.src = track.preview;
       audioPlayer.play();
-      playPauseButton.innerHTML = getPauseIcon();
-      mobilePlayPauseButton.innerHTML = getPauseIcon();
+      playPauseButton.innerHTML = getPauseIcon("black");
+      mobilePlayPauseButton.innerHTML = getPauseIcon("white");
       updatePlayerUI(track);
     }
   }
@@ -123,24 +123,24 @@ document.addEventListener("DOMContentLoaded", function () {
   playPauseButton.parentElement.addEventListener("click", function () {
     if (audioPlayer.paused) {
       audioPlayer.play();
-      playPauseButton.innerHTML = getPauseIcon();
-      mobilePlayPauseButton.innerHTML = getPauseIcon();
+      playPauseButton.innerHTML = getPauseIcon("black");
+      mobilePlayPauseButton.innerHTML = getPauseIcon("white");
     } else {
       audioPlayer.pause();
-      playPauseButton.innerHTML = getPlayIcon();
-      mobilePlayPauseButton.innerHTML = getPlayIcon();
+      playPauseButton.innerHTML = getPlayIcon("black");
+      mobilePlayPauseButton.innerHTML = getPlayIcon("white");
     }
   });
 
   mobilePlayPauseButton.parentElement.addEventListener("click", function () {
     if (audioPlayer.paused) {
       audioPlayer.play();
-      playPauseButton.innerHTML = getPauseIcon();
-      mobilePlayPauseButton.innerHTML = getPauseIcon();
+      playPauseButton.innerHTML = getPauseIcon("black");
+      mobilePlayPauseButton.innerHTML = getPauseIcon("white");
     } else {
       audioPlayer.pause();
-      playPauseButton.innerHTML = getPlayIcon();
-      mobilePlayPauseButton.innerHTML = getPlayIcon();
+      playPauseButton.innerHTML = getPlayIcon("black");
+      mobilePlayPauseButton.innerHTML = getPlayIcon("white");
     }
   });
 
@@ -158,17 +158,17 @@ document.addEventListener("DOMContentLoaded", function () {
     return `${minutes}:${secs}`;
   }
 
-  function getPlayIcon() {
+  function getPlayIcon(color) {
     return (
-      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-play-fill" viewBox="2 2 12 12">' +
+      `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${color}" class="bi bi-play-fill" viewBox="2 2 12 12">` +
       '<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>' +
       "</svg>"
     );
   }
 
-  function getPauseIcon() {
+  function getPauseIcon(color) {
     return (
-      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
+      `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${color}" class="bi bi-pause-fill" viewBox="2 2 12 12">` +
       '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
       "</svg>"
     );
