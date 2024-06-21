@@ -17,6 +17,9 @@ showActivitiesBtn.addEventListener("click", () => {
   activities.classList.toggle("d-lg-block");
 });
 
+const arrayArtists = [5620251, 5484712, 1116771, 9568982, 4145, 381, 1519461, 185473, 8354140, 1350335, 11138514, 668525, 4452092, 54654622, 5111084, 927, 1467261, 12096672, 6006756, 3583591];
+const randomArtist = arrayArtists[Math.floor(Math.random() * arrayArtists.length)];
+
 window.addEventListener("DOMContentLoaded", () => {
   const annunciImg = document.getElementById("annunciImg");
   const annunciTypeOfRecord = document.getElementById("annunciTypeOfRecord");
@@ -166,7 +169,7 @@ window.addEventListener("DOMContentLoaded", () => {
         audioPlayer.volume = event.currentTarget.value / 100;
       });
 
-      fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/892")
+      fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + randomArtist)
         .then(response => {
           if (response.ok) {
             return response.json();
