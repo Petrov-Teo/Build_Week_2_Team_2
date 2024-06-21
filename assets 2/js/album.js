@@ -12,10 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const albumLength = document.getElementById("albumLength");
   const elencoBraniAlbum = document.querySelector(".elencoBraniAlbum");
   const imgFooter = document.getElementById("imgFooter");
+  const imgAlbumMobile = document.getElementById("imgAlbumMobile");
+
+  cl(treeeDotsVertical);
 
   // URL
-  const query = "423368";
-  const serverURL = "https://striveschool-api.herokuapp.com/api/deezer/album/" + query;
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const serverURL = "https://striveschool-api.herokuapp.com/api/deezer/album/" + id;
 
   fetch(serverURL)
     .then(function (response) {
@@ -33,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       numberSongsAlbum.innerText = `${album.nb_tracks} brani`;
       albumYear.innerText = album.release_date.substring(0, 4);
       albumLength.innerText = `${Math.floor(album.duration / 60)} min ${album.duration % 60} sec.`;
+      imgAlbumMobile.src = album.cover_big;
 
       cl(album);
 
@@ -77,12 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
         songContainer.appendChild(songContainerRow);
         elencoBraniAlbum.appendChild(songContainer);
       });
-
-      //   imgAlbum.src = album.cover_medium;
-      //   albumName.textContent = album.title;
-      //   artistName.textContent = album.artist.name;
-      //   albumYear.textContent = new Date(album.release_date).getFullYear();
-      //   numberSongsAlbum.textContent = tracks.length;
     });
 });
 
