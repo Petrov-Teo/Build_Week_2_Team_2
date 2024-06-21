@@ -121,3 +121,10 @@ svg:hover {
     height: inherit;
   }
 }
+
+.positionMobyle {
+  background-color: #262626;
+  position: fixed;
+  z-index: 99;
+  bottom: 100px;
+}
