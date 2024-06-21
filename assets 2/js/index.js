@@ -42,6 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
       annunciTitle.innerText = canzone.title;
       annunciArtist.innerText = canzone.artist.name;
       annunciDescription.innerText = "Get rickrolled!";
+      let currentTrack = null;
 
       annunciPlayBtn.addEventListener("click", () => {
         if (currentTrack === canzone) {
@@ -73,10 +74,10 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       function updatePlayer(canzone) {
-        document.querySelector(".player-cover").src = song.album.cover;
-        document.querySelector(".player-title").textContent = song.title;
-        document.querySelector(".player-artist").textContent = song.artist.name;
-        audioPlayer.src = song.preview;
+        document.querySelector(".player-cover").src = canzone.album.cover;
+        document.querySelector(".player-title").innerText = canzone.title;
+        document.querySelector(".player-artist").innerText = canzone.artist.name;
+        audioPlayer.src = canzone.preview;
         audioPlayer.play();
         playPauseButton.innerHTML = getPauseIcon();
         document.querySelector("footer").style.display = "flex";
@@ -91,13 +92,13 @@ window.addEventListener("DOMContentLoaded", () => {
         const duration = 30; // Durata in secondi della preview
         totalTimeLabel.innerText = "0:30"; // Imposta la durata totale
 
-        var interval = setInterval(function () {
+        const interval = setInterval(function () {
           if (audioPlayer.paused || audioPlayer.currentTime >= duration) {
             clearInterval(interval);
             playPauseButton.innerHTML = getPlayIcon();
           } else {
             songBar.style.width = `${(audioPlayer.currentTime / 30) * 100}%`;
-            currentTimeLabel.textContent = formatTime(audioPlayer.currentTime);
+            currentTimeLabel.innerText = formatTime(audioPlayer.currentTime);
           }
         }, 300);
       }
