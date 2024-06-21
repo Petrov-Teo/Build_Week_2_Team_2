@@ -73,6 +73,10 @@ small {
   bottom: 100px;
 }
 
+.discoverArtistCard {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 767px) {
   .cards-container {
     margin-bottom: 9rem;

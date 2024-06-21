@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const mobilePlayerTitle = document.getElementById("mobilePlayerTitle");
   const mobilePlayerBtn = document.getElementById("mobilePlayerBtn");
 
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/track/114811546")
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/track/781592622")
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -165,5 +165,90 @@ window.addEventListener("DOMContentLoaded", () => {
       volumeSlider.addEventListener("change", event => {
         audioPlayer.volume = event.currentTarget.value / 100;
       });
-    });
+
+      fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/892")
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Couldn't get data");
+          }
+        })
+        .then(artista => {
+          console.log(artista);
+          const discoverArtistRow = document.getElementById("discoverArtistRow");
+          const discoverArtistHeading = document.getElementById("discoverArtistHeading");
+          discoverArtistHeading.innerText = `Scopri un nuovo artista - ${artista.name}`;
+          const artistBox = document.createElement("div");
+          artistBox.className = "text-center col-12 col-md-6 col-xl-3";
+          artistBox.style.width = "";
+          artistBoxImg = document.createElement("img");
+          artistBoxImg.src = artista.picture_xl;
+          artistBoxImg.className = "card-img-top rounded-circle artist-box-img mt-4";
+          artistBoxBody = document.createElement("div");
+          artistBoxBody.className = "card-body mt-3";
+          artistBoxTitle = document.createElement("h5");
+          artistBoxTitle.className = "card-title";
+          artistBoxTitle.innerText = artista.name;
+          artistBoxBody.appendChild(artistBoxTitle);
+          artistBox.append(artistBoxImg, artistBoxBody);
+          discoverArtistRow.appendChild(artistBox);
+
+          fetch(artista.tracklist)
+            .then(response => {
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new Error("Couldn't get data");
+              }
+            })
+            .then(arrayCanzoni => {
+              console.log(arrayCanzoni);
+              const top3Songs = arrayCanzoni.data.slice(0, 3);
+              console.log("top 3", top3Songs);
+              top3Songs.forEach(canzone => {
+                const col = document.createElement("div");
+                col.className = "col-12 col-md-6 col-xl-3 discoverArtistCard";
+                const card = document.createElement("div");
+                card.className = "card p-3 card-personalised";
+                const row = document.createElement("div");
+                row.className = "row";
+                const cardImageContainer = document.createElement("div");
+                cardImageContainer.className = "col-5 col-md-12";
+                const cardImageTop = document.createElement("img");
+                cardImageTop.src = canzone.album.cover_big;
+                cardImageTop.className = "card-img-top";
+                cardImageContainer.appendChild(cardImageTop);
+                const cardText = document.createElement("div");
+                cardText.className = "card-body col-7 col-md-12";
+                const cardTitle = document.createElement("h6");
+                cardTitle.className = "card-title line-clamp";
+                cardTitle.innerText = canzone.title;
+                const cardP = document.createElement("p");
+                cardP.className = "card-text line-clamp2";
+                cardP.innerText = canzone.artist.name;
+                cardText.append(cardTitle, cardP);
+                row.append(cardImageContainer, cardText);
+                card.appendChild(row);
+                col.appendChild(card);
+                discoverArtistRow.appendChild(col);
+                col.addEventListener("click", () => {
+                  if (currentTrack === canzone) {
+                    if (!audioPlayer.paused) {
+                      audioPlayer.pause();
+                      playPauseButton.innerHTML = getPlayIcon();
+                    } else {
+                      audioPlayer.play();
+                      playPauseButton.innerHTML = getPauseIcon();
+                    }
+                  } else {
+                    currentTrack = canzone;
+                    updatePlayer(canzone);
+                  }
+                });
+              });
+            });
+        });
+    })
+    .catch(error => console.log(error));
 });
