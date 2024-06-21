@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // creo il numero di riproduzioni
         const riproduzioni = document.createElement("div");
         riproduzioni.className = "col-3 text-end textColor";
-        riproduzioni.innerText = canzone.rank;
+        riproduzioni.innerText = canzone.rank.toLocaleString();
 
         // creo la durata della canzone
         const durata = document.createElement("div");
@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         durata.innerText = `${Math.floor(canzone.duration / 60)}:${canzone.duration % 60}`;
 
         songContainerRow.append(albumNumberSong, songDetails, riproduzioni, durata);
+        cl(canzone);
         songContainer.appendChild(songContainerRow);
         elencoBraniAlbum.appendChild(songContainer);
       });
