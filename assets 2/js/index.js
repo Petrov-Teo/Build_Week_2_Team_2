@@ -213,8 +213,11 @@ window.addEventListener("DOMContentLoaded", () => {
               const top3Songs = arrayCanzoni.data.slice(0, 3);
               console.log("top 3", top3Songs);
               top3Songs.forEach(canzone => {
+                const anchor = document.createElement("a");
+                anchor.className = "col-12 col-md-6 col-xl-3";
+                anchor.setAttribute("href", `./album.html?id=${canzone.album.id}`);
                 const col = document.createElement("div");
-                col.className = "col-12 col-md-6 col-xl-3 discoverArtistCard";
+                col.className = "discoverArtistCard";
                 const card = document.createElement("div");
                 card.className = "card p-3 card-personalised";
                 const row = document.createElement("div");
@@ -237,8 +240,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 row.append(cardImageContainer, cardText);
                 card.appendChild(row);
                 col.appendChild(card);
-                discoverArtistRow.appendChild(col);
-                col.addEventListener("click", () => {
+                anchor.appendChild(col);
+                discoverArtistRow.appendChild(anchor);
+                anchor.addEventListener("click", () => {
                   if (currentTrack === canzone) {
                     if (!audioPlayer.paused) {
                       audioPlayer.pause();
