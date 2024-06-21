@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const tracklist = album.tracks.data;
       tracklist.forEach((canzone, index) => {
-
         const songContainer = document.createElement("div");
         songContainer.className = "container pt-3 ps-3";
 
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const durata = document.createElement("div");
         durata.className = "d-none d-md-block col-md-2 text-center ps-3 textColor";
-        durata.innerText = `${Math.floor(canzone.duration / 60)}:${(canzone.duration % 60).toString().padStart(2, '0')}`;
+        durata.innerText = `${Math.floor(canzone.duration / 60)}:${(canzone.duration % 60).toString().padStart(2, "0")}`;
 
         songContainerRow.append(albumNumberSong, songDetails, riproduzioni, durata);
         cl(canzone);
@@ -154,7 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
     return `${minutes}:${secs}`;
   }
 

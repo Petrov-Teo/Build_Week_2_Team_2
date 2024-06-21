@@ -112,7 +112,7 @@ function displayResults(data) {
     songDiv.innerHTML = `
       <div class="row g-0 border border-0 d-flex align-items-center">
         <div class="col-md-4 position-relative">
-          <img src="${track.album.cover_medium}" class="img-fluid rounded-start" alt="${track.title}">
+          <img src="${track.album.cover_medium}" class="img-fluid rounded-start" alt="${track.title}" onclick=window.location.assign("./album.html?id=${track.album.id}")>
           <span class="play-button">&#9658;</span>
         </div>
         <a href="./album.html?id=${track.album.id}" class="col-md-8">
