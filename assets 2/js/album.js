@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(cl);
   };
 
-  // DOM SELECTION
   const imgAlbum = document.getElementById("imgAlbum");
   const albumName = document.getElementById("titoloAlbum");
   const imgArtist = document.getElementById("imgArtist");
@@ -16,12 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const playerTitle = document.querySelector(".player-title");
   const playerArtist = document.querySelector(".player-artist");
   const imgAlbumMobile = document.getElementById("imgAlbumMobile");
+  const currentTimeLabel = document.getElementById("current-time");
+  const totalTimeLabel = document.getElementById("total-time");
+  const progressBar = document.getElementById("songBar");
+  const mobilePlayerCover = document.querySelector(".mobile-player img");
+  const mobilePlayerTitle = document.querySelector(".mobile-player .line-clamp");
 
   const audioPlayer = document.getElementById("audio-player");
   const playPauseButton = document.getElementById("play-pause");
   let currentTrack = null;
 
-  // URL
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const serverURL = "https://striveschool-api.herokuapp.com/api/deezer/album/" + id;
@@ -46,20 +49,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const tracklist = album.tracks.data;
       tracklist.forEach((canzone, index) => {
-        // creo il contenitore
+
         const songContainer = document.createElement("div");
         songContainer.className = "container pt-3 ps-3";
 
-        // creo la row
         const songContainerRow = document.createElement("div");
         songContainerRow.className = "row d-flex align-items-center";
 
-        // creo il contenitore del numero di canzone
         const albumNumberSong = document.createElement("div");
         albumNumberSong.className = "col-1 text-center textColor";
         albumNumberSong.innerText = index + 1;
 
-        // creo nome canzone e nome artista
         const songDetails = document.createElement("div");
         songDetails.className = "col-11 col-md-6";
         const songName = document.createElement("p");
@@ -70,12 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
         artistName.innerText = canzone.artist.name;
         songDetails.append(songName, artistName);
 
-        // creo il numero di riproduzioni
         const riproduzioni = document.createElement("div");
         riproduzioni.className = "d-none d-md-block col-md-3 text-end textColor";
         riproduzioni.innerText = canzone.rank.toLocaleString();
 
-        // creo la durata della canzone
         const durata = document.createElement("div");
         durata.className = "d-none d-md-block col-md-2 text-center ps-3 textColor";
         durata.innerText = `${Math.floor(canzone.duration / 60)}:${(canzone.duration % 60).toString().padStart(2, '0')}`;
@@ -85,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
         songContainer.appendChild(songContainerRow);
         elencoBraniAlbum.appendChild(songContainer);
 
-        // Aggiungi event listener per la traccia
         songContainerRow.addEventListener("click", function () {
           playTrack(canzone);
         });
@@ -111,13 +108,38 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updatePlayerUI(track) {
-    // Aggiorna l'interfaccia utente del player con le informazioni della traccia corrente
     imgFooter.src = track.album.cover_big;
     imgAlbumMobile.src = track.album.cover_big;
+    mobilePlayerCover.src = track.album.cover_big;
     playerTitle.textContent = track.title;
+    mobilePlayerTitle.textContent = track.title;
     playerArtist.textContent = track.artist.name;
-    // Mostra il player se è nascosto
     document.querySelector("footer").style.display = "flex";
+    totalTimeLabel.textContent = "0:30"; // Durata della preview
+  }
+
+  playPauseButton.parentElement.addEventListener("click", function () {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playPauseButton.innerHTML = getPauseIcon();
+    } else {
+      audioPlayer.pause();
+      playPauseButton.innerHTML = getPlayIcon();
+    }
+  });
+
+  audioPlayer.addEventListener("timeupdate", function () {
+    const currentTime = audioPlayer.currentTime;
+    const duration = audioPlayer.duration || 30; // Durata in secondi della preview
+    const progressPercent = (currentTime / duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+    currentTimeLabel.textContent = formatTime(currentTime);
+  });
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${minutes}:${secs}`;
   }
 
   function getPlayIcon() {
