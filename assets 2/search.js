@@ -38,23 +38,8 @@ function searchDeezer(query) {
     .then((response) => response.json())
     .then((data) => {
       displayResults(data);
-      displayTitles();
     })
     .catch((error) => console.error("Error:", error));
-}
-
-function displayTitles() {
-  const titlesContainer = document.getElementById("titles-container");
-  titlesContainer.innerHTML = `
-    <div class="titles" style="display: flex; justify-content: space-between; width: 100%;">
-      <h2 style="color: white; flex: 1; text-align: start; margin-left: 1%;">Artist</h2>
-      <h2 style="color: white; flex: 1; text-align: start; margin-right: 42%;">Songs</h2>
-    </div>
-  `;
-  titlesContainer.style.display = "flex";
-  titlesContainer.style.justifyContent = "space-between";
-  titlesContainer.style.padding = "10px 0";
-  titlesContainer.style.marginBottom = "20px";
 }
 
 function displayResults(data) {
@@ -80,9 +65,16 @@ function displayResults(data) {
   artistInfo.classList.add("artist-info");
   songsInfo.classList.add("songs-info");
 
+  artistInfo.style.flex = "1";
+  songsInfo.style.flex = "2";
+  songsInfo.style.display = "flex";
+  songsInfo.style.flexDirection = "column";
+  songsInfo.style.flexWrap = "nowrap";
+
   const artist = tracks[0].artist;
 
   artistInfo.innerHTML = `
+    <h2 style="color: white; text-align: center; margin-left: 1%;">Artist</h2>
     <div class="artist-card card border border-0 text-center" style="background-color: transparent;">
       <img src="${artist.picture_medium}" class="card-img-top rounded-circle" alt="${artist.name}">
       <div class="card-body">
@@ -103,14 +95,25 @@ function displayResults(data) {
     </div>
   `;
 
+  const songsTitle = document.createElement("h2");
+  songsTitle.style.color = "white";
+  songsTitle.style.textAlign = "start";
+  songsTitle.style.marginLeft = "31%";
+  songsTitle.textContent = "Songs";
+  songsInfo.appendChild(songsTitle);
+
   tracks.forEach((track) => {
     const songDiv = document.createElement("div");
     songDiv.classList.add("song-card", "card", "card-title");
+    songDiv.style.marginBottom = "10px";
+    songDiv.style.marginLeft = "30%";
+    songDiv.style.display = "flex";
+    songDiv.style.alignItems = "flex-start";
     songDiv.innerHTML = `
       <div class="image-container">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
       </div>
-      <div class="card-body">
+      <div class="text-container" style="padding-left: 0px;">
         <h5 class="card-title">${track.title}</h5>
         <p class="card-text">Album: ${track.album.title}</p>
       </div>
