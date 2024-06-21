@@ -52,6 +52,7 @@ li {
 
 main {
   background-color: #ceb349;
+  flex-grow: 1;
 }
 
 .btn-success {

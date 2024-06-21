@@ -26,8 +26,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const annunciPlayBtn = document.getElementById("annunciPlayBtn");
   const audioPlayer = document.getElementById("audio-player");
   const playPauseButton = document.getElementById("play-pause");
+  const mobilePlayerImg = document.getElementById("mobilePlayerImg");
+  const mobilePlayerTitle = document.getElementById("mobilePlayerTitle");
+  const mobilePlayerBtn = document.getElementById("mobilePlayerBtn");
 
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/track/781592622")
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/track/114811546")
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -42,6 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
       annunciTitle.innerText = canzone.title;
       annunciArtist.innerText = canzone.artist.name;
       annunciDescription.innerText = "Get rickrolled!";
+      let currentTrack = null;
 
       annunciPlayBtn.addEventListener("click", () => {
         if (currentTrack === canzone) {
@@ -72,13 +76,30 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       });
 
+      mobilePlayerBtn.addEventListener("click", function () {
+        if (currentTrack) {
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+            mobilePlayerBtn.innerHTML = getPauseIconMobile();
+            updateProgressBar();
+          } else {
+            audioPlayer.pause();
+            mobilePlayerBtn.innerHTML = getPlayIconMobile();
+            updateProgressBar();
+          }
+        }
+      });
+
       function updatePlayer(canzone) {
-        document.querySelector(".player-cover").src = song.album.cover;
-        document.querySelector(".player-title").textContent = song.title;
-        document.querySelector(".player-artist").textContent = song.artist.name;
-        audioPlayer.src = song.preview;
+        document.querySelector(".player-cover").src = canzone.album.cover;
+        document.querySelector(".player-title").innerText = canzone.title;
+        document.querySelector(".player-artist").innerText = canzone.artist.name;
+        audioPlayer.src = canzone.preview;
+        mobilePlayerImg.src = canzone.album.cover;
+        mobilePlayerTitle.innerText = canzone.title;
         audioPlayer.play();
         playPauseButton.innerHTML = getPauseIcon();
+        mobilePlayerBtn.innerHTML = getPauseIconMobile();
         document.querySelector("footer").style.display = "flex";
         updateProgressBar(); // Inizia a aggiornare la barra di progresso
       }
@@ -91,13 +112,13 @@ window.addEventListener("DOMContentLoaded", () => {
         const duration = 30; // Durata in secondi della preview
         totalTimeLabel.innerText = "0:30"; // Imposta la durata totale
 
-        var interval = setInterval(function () {
+        const interval = setInterval(function () {
           if (audioPlayer.paused || audioPlayer.currentTime >= duration) {
             clearInterval(interval);
             playPauseButton.innerHTML = getPlayIcon();
           } else {
             songBar.style.width = `${(audioPlayer.currentTime / 30) * 100}%`;
-            currentTimeLabel.textContent = formatTime(audioPlayer.currentTime);
+            currentTimeLabel.innerText = formatTime(audioPlayer.currentTime);
           }
         }, 300);
       }
@@ -116,9 +137,25 @@ window.addEventListener("DOMContentLoaded", () => {
         );
       }
 
+      function getPlayIconMobile() {
+        return (
+          '<svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="25" height="25" fill="#ffffff">' +
+          '<path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>' +
+          "</svg>"
+        );
+      }
+
       function getPauseIcon() {
         return (
           '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
+          '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
+          "</svg>"
+        );
+      }
+
+      function getPauseIconMobile() {
+        return (
+          '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#ffffff" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
           '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
           "</svg>"
         );

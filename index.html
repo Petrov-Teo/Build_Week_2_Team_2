@@ -114,8 +114,8 @@
     <div class="container-fluid d-md-none rounded mobile-player">
         <div class="d-flex align-items-center justify-content-between py-2">
             <div class="d-flex align-items-center">
-                <img src="./assets 2/imgs/main/image-11.jpg" alt="" width="60" class="me-3 rounded-1">
-                <div class="line-clamp">Easy Come Easy Go</div>
+                <img id="mobilePlayerImg" src="https://api.deezer.com/album/115888392/image" alt="" width="60" class="me-3 rounded-1">
+                <div id="mobilePlayerTitle" class="line-clamp">Never Gonna Give You Up</div>
             </div>
             <div class="d-flex">
                 <button class="btn">
@@ -134,7 +134,7 @@
                         </path>
                     </svg>
                 </button>
-                <button class="btn">
+                <button id="mobilePlayerBtn" class="btn">
                     <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="25" height="25"
                         fill="#ffffff">
                         <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
@@ -982,10 +982,10 @@
     <footer class="container-fluid d-none d-md-flex justify-content-between align-items-center">
         <!-- LEFT -->
         <div class="d-flex footer-flex-div align-items-center justify-content-start player">
-            <img src="./assets 2/imgs/main/image-12.jpg" alt="" width="60" class="me-2 rounded-1 player-cover" />
+            <img src="https://api.deezer.com/album/115888392/image" alt="" width="60" class="me-2 rounded-1 player-cover" />
             <div class="d-flex flex-column me-5 player-info">
-                <div class="player-title">Titolo</div>
-                <small class="player-artist">Artista</small>
+                <div class="player-title line-clamp">Never Gonna Give You Up</div>
+                <small class="player-artist">Rick Astley</small>
             </div>
             <button class="btn">
                 <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="15" height="15"
@@ -1019,9 +1019,9 @@
                         </path>
                     </svg>
                 </button>
-                <button class="btn play-btn rounded-circle">
-                    <svg id="play-pause" data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI"
-                        width="15" height="15" fill="#000000">
+                <button id="play-pause" class="btn play-btn rounded-circle">
+                    <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="15" height="15"
+                        fill="#000000">
                         <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
                     </svg>
                 </button>
