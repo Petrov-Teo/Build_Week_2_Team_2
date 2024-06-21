@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cl = function (cl) {
     console.log(cl);
   };
-  //   DOM SELECTION
+
+  // DOM SELECTION
   const imgAlbum = document.getElementById("imgAlbum");
   const albumName = document.getElementById("titoloAlbum");
   const imgArtist = document.getElementById("imgArtist");
@@ -11,10 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const numberSongsAlbum = document.getElementById("numberSongs");
   const albumLength = document.getElementById("albumLength");
   const elencoBraniAlbum = document.querySelector(".elencoBraniAlbum");
-  const imgFooter = document.getElementById("imgFooter");
+  const imgFooter = document.querySelector(".player-cover");
+  const playerTitle = document.querySelector(".player-title");
+  const playerArtist = document.querySelector(".player-artist");
   const imgAlbumMobile = document.getElementById("imgAlbumMobile");
 
-  cl(treeeDotsVertical);
+  const audioPlayer = document.getElementById("audio-player");
+  const playPauseButton = document.getElementById("play-pause");
+  let currentTrack = null;
 
   // URL
   const params = new URLSearchParams(window.location.search);
@@ -73,24 +78,73 @@ document.addEventListener("DOMContentLoaded", function () {
         // creo la durata della canzone
         const durata = document.createElement("div");
         durata.className = "d-none d-md-block col-md-2 text-center ps-3 textColor";
-        durata.innerText = `${Math.floor(canzone.duration / 60)}:${canzone.duration % 60}`;
+        durata.innerText = `${Math.floor(canzone.duration / 60)}:${(canzone.duration % 60).toString().padStart(2, '0')}`;
 
         songContainerRow.append(albumNumberSong, songDetails, riproduzioni, durata);
         cl(canzone);
         songContainer.appendChild(songContainerRow);
         elencoBraniAlbum.appendChild(songContainer);
+
+        // Aggiungi event listener per la traccia
+        songContainerRow.addEventListener("click", function () {
+          playTrack(canzone);
+        });
       });
     });
-});
 
-const activities = document.getElementById("activities");
-const hideActivitiesBtn = document.getElementById("hideActivitiesBtn");
-const showActivitiesBtn = document.getElementById("showActivitiesBtn");
+  function playTrack(track) {
+    if (currentTrack === track) {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseButton.innerHTML = getPauseIcon();
+      } else {
+        audioPlayer.pause();
+        playPauseButton.innerHTML = getPlayIcon();
+      }
+    } else {
+      currentTrack = track;
+      audioPlayer.src = track.preview;
+      audioPlayer.play();
+      playPauseButton.innerHTML = getPauseIcon();
+      updatePlayerUI(track);
+    }
+  }
 
-hideActivitiesBtn.addEventListener("click", () => {
-  activities.classList.remove("d-lg-block");
-});
+  function updatePlayerUI(track) {
+    // Aggiorna l'interfaccia utente del player con le informazioni della traccia corrente
+    imgFooter.src = track.album.cover_big;
+    imgAlbumMobile.src = track.album.cover_big;
+    playerTitle.textContent = track.title;
+    playerArtist.textContent = track.artist.name;
+    // Mostra il player se è nascosto
+    document.querySelector("footer").style.display = "flex";
+  }
 
-showActivitiesBtn.addEventListener("click", () => {
-  activities.classList.toggle("d-lg-block");
+  function getPlayIcon() {
+    return (
+      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-play-fill" viewBox="2 2 12 12">' +
+      '<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>' +
+      "</svg>"
+    );
+  }
+
+  function getPauseIcon() {
+    return (
+      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-pause-fill" viewBox="2 2 12 12">' +
+      '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>' +
+      "</svg>"
+    );
+  }
+
+  const activities = document.getElementById("activities");
+  const hideActivitiesBtn = document.getElementById("hideActivitiesBtn");
+  const showActivitiesBtn = document.getElementById("showActivitiesBtn");
+
+  hideActivitiesBtn.addEventListener("click", () => {
+    activities.classList.remove("d-lg-block");
+  });
+
+  showActivitiesBtn.addEventListener("click", () => {
+    activities.classList.toggle("d-lg-block");
+  });
 });
