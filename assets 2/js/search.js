@@ -91,7 +91,6 @@ function displayResults(data) {
         <div class="artist-header">
           <h5 class="card-title" style="color: white;">${artist.name}</h5>
         </div>
-        <p class="card-text" style="color: white;">Number of tracks: ${tracks.length}</p>
       </div>
     </div>
     </a>

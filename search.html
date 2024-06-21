@@ -12,6 +12,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <!-- Import CSS personalizzati -->
   <link rel="stylesheet" href="./assets 2/css/circular-font.css" />
+  <link rel="stylesheet" href="./assets 2/css/general.css">
   <link rel="stylesheet" href="./assets 2/css/search.css" />
 </head>
 
@@ -817,9 +818,9 @@
   <!-- CHIUSURA PAGE CONTAINER -->
 
   <!-- PLAYER -->
-  <footer class="container-fluid d-none d-md-flex justify-content-between align-items-center position-fixed">
+  <footer class="container-fluid d-none d-md-flex justify-content-between align-items-center">
     <!-- LEFT -->
-    <div class="d-flex footer-flex-div align-items-center justify-content-start">
+    <div class="d-flex footer-flex-div align-items-center justify-content-start player">
       <img src="https://api.deezer.com/album/115888392/image" alt="" width="60" class="me-2 rounded-1 player-cover" />
       <div class="d-flex flex-column me-5 player-info">
         <div class="player-title line-clamp">Never Gonna Give You Up</div>
@@ -857,7 +858,7 @@
             </path>
           </svg>
         </button>
-        <button class="btn rounded-circle" style="background-color: #1db954">
+        <button id="play-pause" class="btn play-btn rounded-circle">
           <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="15" height="15"
             fill="#000000">
             <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
@@ -880,15 +881,18 @@
           </svg>
         </button>
       </div>
-      <div class="d-flex justify-content-center column-gap-3">
-        <label for="progress-bar"><small>1:26</small></label>
-        <progress id="progressBarSong" class="song-bar" value="60" max="100"></progress>
-        <label for="progress-bar"><small>4:26</small></label>
+      <div class="d-flex justify-content-center align-items-center column-gap-3">
+        <label for="progress-bar"><small id="current-time">0:01</small></label>
+        <div id="progressBarSong" class="progress song-progress" role="progressbar" aria-label="Success example" aria-valuenow="0" aria-valuemin="0"
+          aria-valuemax="30">
+          <div id="songBar" class="progress-bar bg-success song-bar" style="width: 0%"></div>
+        </div>
+        <label for="progress-bar"><small id="total-time">0:30</small></label>
       </div>
     </div>
     <!-- RIGHT -->
     <div class="d-flex justify-content-end footer-flex-div align-items-center">
-      <button id="showActivitiesBtn" class="btn btn d-none d-lg-block">
+      <button class="btn" id="showActivitiesBtn">
         <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="15" height="15"
           fill="#b3b3b3">
           <path d="M11.196 8 6 5v6l5.196-3z"></path>
@@ -924,7 +928,10 @@
           <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z"></path>
         </svg>
       </label>
-      <progress id="progressBarVolume" class="volume-bar" value="90" max="100"></progress>
+      <input type="range" id="volumeSlider" class="volume-slider">
+
+
+
       <button class="btn">
         <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="15" height="15"
           fill="#b3b3b3">
@@ -934,40 +941,7 @@
         </svg>
       </button>
     </div>
-    <div class="container-fluid d-md-none rounded mobile-player">
-      <div class="d-flex align-items-center justify-content-between py-2">
-        <div class="d-flex align-items-center">
-          <img id="mobilePlayerImg" src="https://api.deezer.com/album/115888392/image" alt="" width="60" class="me-3 rounded-1" />
-          <div id="mobilePlayerTitle" class="line-clamp">
-            Never Gonna Give You Up
-          </div>
-        </div>
-        <div class="d-flex">
-          <button class="btn">
-            <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="25" height="25"
-              fill="#b3b3b3">
-              <path
-                d="M6 2.75C6 1.784 6.784 1 7.75 1h6.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15h-6.5A1.75 1.75 0 0 1 6 13.25V2.75zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25h-6.5zm-6 0a.25.25 0 0 0-.25.25v6.5c0 .138.112.25.25.25H4V11H1.75A1.75 1.75 0 0 1 0 9.25v-6.5C0 1.784.784 1 1.75 1H4v1.5H1.75zM4 15H2v-1.5h2V15z">
-              </path>
-              <path d="M13 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1-5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-            </svg>
-          </button>
-          <button class="btn">
-            <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24" width="25" height="25" fill="#b3b3b3">
-              <path
-                d="M5.21 1.57a6.757 6.757 0 0 1 6.708 1.545.124.124 0 0 0 .165 0 6.741 6.741 0 0 1 5.715-1.78l.004.001a6.802 6.802 0 0 1 5.571 5.376v.003a6.689 6.689 0 0 1-1.49 5.655l-7.954 9.48a2.518 2.518 0 0 1-3.857 0L2.12 12.37A6.683 6.683 0 0 1 .627 6.714 6.757 6.757 0 0 1 5.21 1.57zm3.12 1.803a4.757 4.757 0 0 0-5.74 3.725l-.001.002a4.684 4.684 0 0 0 1.049 3.969l.009.01 7.958 9.485a.518.518 0 0 0 .79 0l7.968-9.495a4.688 4.688 0 0 0 1.049-3.965 4.803 4.803 0 0 0-3.931-3.794 4.74 4.74 0 0 0-4.023 1.256l-.008.008a2.123 2.123 0 0 1-2.9 0l-.007-.007a4.757 4.757 0 0 0-2.214-1.194z">
-              </path>
-            </svg>
-          </button>
-          <button id="mobilePlayerBtn" class="btn">
-            <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI" width="25" height="25"
-              fill="#ffffff">
-              <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+    <audio id="audio-player"></audio>
   </footer>
   <!-- Import JS Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
