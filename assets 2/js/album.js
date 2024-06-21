@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
       artistName.innerText = album.artist.name;
 
       imgAlbum.src = album.cover_big;
-
       imgArtist.src = album.artist.picture_xl;
       imgFooter.src = album.cover_big;
       artistName.innerText = album.artist.name;

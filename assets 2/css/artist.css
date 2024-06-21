@@ -128,6 +128,13 @@ nav {
   background-color: #121212;
 }
 
+.mobile-player {
+  background-color: #262626;
+  position: fixed;
+  z-index: 99;
+  bottom: 100px;
+}
+
 /* MEDIA QUERY  */
 
 @media screen and (max-width: 767px) {
@@ -243,7 +250,6 @@ nav {
 
 /* blocco centrale */
 
-
 .track-info-container {
   display: flex;
   justify-content: space-between;
@@ -256,7 +262,7 @@ nav {
   align-items: center;
 }
 
-.songDuration{
+.songDuration {
   margin-left: 100px;
 }
 
