@@ -51,7 +51,7 @@ li {
 }
 
 main {
-  background-color: #ceb349;
+  background-color: #2c2c2c;
   flex-grow: 1;
 }
 
@@ -76,11 +76,13 @@ main {
 }
 
 .elencoBraniAlbum {
-  background: linear-gradient(to bottom, #584b1f, #000000);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(44, 44, 44, 0.783333401720063) 75%);
   width: 100%;
   min-height: 100vh;
   opacity: 99%;
   left: 0;
+  margin-bottom: 8rem;
 }
 
 .buttonPreferit {
@@ -110,10 +112,6 @@ svg:hover {
 }
 .textColor {
   color: #b3b3b3;
-}
-
-.iscriviti {
-  color: #000000;
 }
 
 @media screen and (min-width: 768px) {

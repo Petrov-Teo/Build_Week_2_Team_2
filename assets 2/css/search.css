@@ -191,7 +191,7 @@ h2 {
   cursor: pointer;
 }
 
-.artist-card img{
+.artist-card img {
   cursor: pointer;
 }
 
@@ -213,11 +213,6 @@ h2 {
 .song-card:hover .play-button {
   display: block;
 }
-
-
-
-
-
 
 .card-title {
   color: white;
@@ -339,11 +334,6 @@ h2 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-  }
-
-  .artist-card img {
-    width: 80px;
-    height: 80px;
   }
 
   .artist-card {
