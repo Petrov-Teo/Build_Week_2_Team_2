@@ -112,6 +112,7 @@ function displayResults(data) {
     songDiv.innerHTML = `
       <div class="image-container">
         <img src="${track.album.cover_medium}" class="card-img-top" alt="${track.title}">
+        <div class="play-button">&#9658;</div>
       </div>
       <div class="text-container" style="padding-left: 0px;">
         <h5 class="card-title">${track.title}</h5>
