@@ -213,8 +213,11 @@ window.addEventListener("DOMContentLoaded", () => {
               const top3Songs = arrayCanzoni.data.slice(0, 3);
               console.log("top 3", top3Songs);
               top3Songs.forEach(canzone => {
+                const anchor = document.createElement("a");
+                anchor.setAttribute("href", `./album.html?id=${canzone.album.id}`);
+                anchor.className = "col-12 col-md-6 col-xl-3";
                 const col = document.createElement("div");
-                col.className = "col-12 col-md-6 col-xl-3 discoverArtistCard";
+                col.className = "discoverArtistCard";
                 const card = document.createElement("div");
                 card.className = "card p-3 card-personalised";
                 const row = document.createElement("div");
@@ -231,13 +234,14 @@ window.addEventListener("DOMContentLoaded", () => {
                 cardTitle.className = "card-title line-clamp";
                 cardTitle.innerText = canzone.title;
                 const cardP = document.createElement("p");
-                cardP.className = "card-text line-clamp2";
+                cardP.className = "card-text line-clamp";
                 cardP.innerText = canzone.artist.name;
                 cardText.append(cardTitle, cardP);
                 row.append(cardImageContainer, cardText);
                 card.appendChild(row);
                 col.appendChild(card);
-                discoverArtistRow.appendChild(col);
+                anchor.appendChild(col);
+                discoverArtistRow.appendChild(anchor);
                 col.addEventListener("click", () => {
                   if (currentTrack === canzone) {
                     if (!audioPlayer.paused) {
@@ -253,7 +257,8 @@ window.addEventListener("DOMContentLoaded", () => {
                   }
                 });
               });
-            });
+            })
+            .catch(error => console.log(error));
         });
     })
     .catch(error => console.log(error));
