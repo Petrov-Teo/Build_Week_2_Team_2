@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       imgAlbum.src = album.cover_big;
       imgArtist.src = album.artist.picture_xl;
-      imgFooter.src = album.cover_big;
       artistName.innerText = album.artist.name;
       numberSongsAlbum.innerText = `${album.nb_tracks} brani`;
       albumYear.innerText = album.release_date.substring(0, 4);
