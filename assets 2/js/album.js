@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tracklist.forEach((canzone, index) => {
         // creo il contenitore
         const songContainer = document.createElement("div");
-        songContainer.className = "container pt-3";
+        songContainer.className = "container pt-3 ps-3";
 
         // creo la row
         const songContainerRow = document.createElement("div");
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // creo nome canzone e nome artista
         const songDetails = document.createElement("div");
-        songDetails.className = "col-6";
+        songDetails.className = "col-11 col-md-6";
         const songName = document.createElement("p");
         songName.className = "mb-0";
         songName.innerText = canzone.title;
@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // creo il numero di riproduzioni
         const riproduzioni = document.createElement("div");
-        riproduzioni.className = "col-3 text-end textColor";
+        riproduzioni.className = "d-none d-md-block col-md-3 text-end textColor";
         riproduzioni.innerText = canzone.rank.toLocaleString();
 
         // creo la durata della canzone
         const durata = document.createElement("div");
-        durata.className = "col-2 text-center ps-3 textColor";
+        durata.className = "d-none d-md-block col-md-2 text-center ps-3 textColor";
         durata.innerText = `${Math.floor(canzone.duration / 60)}:${canzone.duration % 60}`;
 
         songContainerRow.append(albumNumberSong, songDetails, riproduzioni, durata);
