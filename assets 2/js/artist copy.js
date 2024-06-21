@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .then(arrayCanzoni => {
             console.log(arrayCanzoni);
             const top10Songs = arrayCanzoni.data.slice(0, 10);
-            console.log("top 5", top10Songs);
+            console.log("top 10", top10Songs);
             top10Songs.forEach((song, index) => {
               const top10SongContainer = document.createElement("div");
               top10SongContainer.className = "d-flex justify-content-between align-items-center mb-3";

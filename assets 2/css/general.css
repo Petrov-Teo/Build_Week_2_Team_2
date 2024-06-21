@@ -98,6 +98,29 @@ footer {
   background-color: transparent;
 }
 
+.volume-progress {
+  width: 25%;
+  height: 7px;
+}
+
+.song-progress {
+  width: 70%;
+  height: 7px;
+}
+
+.play-btn {
+  background-color: #1db954;
+}
+
+.play-btn:hover {
+  background-color: #1db954 !important;
+}
+
+.volume-slider {
+  width: 25%;
+  accent-color: #1db954;
+}
+
 @media screen and (max-width: 767px) {
   main {
     height: (100vh - 160px);
